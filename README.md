@@ -5,3 +5,5 @@ Team Members:
 Chris Egener - Full-stack
 Yash Patel - Full-stack
 Azal Al-Mashta - Full-stack
+
+Tech stack - MERN(MongoDB, Express, React.js, Node.js)
