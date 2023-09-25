@@ -13,7 +13,7 @@ Work Done:
 
 Next Steps:
 - Decide which framework to use
-- Decide tech stack(React.js)
+- Decide tech stack(React.js) and vercel hosting
 - Decide roles 
 - Write User Stories
 - Finish Wiki
