@@ -19,4 +19,4 @@ Next Steps:
 - Finish Wiki
 - Task Breakdown and Assigning tasks
 
-Next meeting: 28/9/2023
+Next meeting: 26/9/2023
