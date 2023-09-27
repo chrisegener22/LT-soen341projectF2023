@@ -13,3 +13,5 @@ Azal Al-Mashta - Full-stack
 
 # Technologies
 MERN(MongoDB, Express, React.js, Node.js)
+
+For the front-end frameworks, we looked at React
