@@ -10,6 +10,7 @@ Creating a website that has many of the essential functions of any real estate w
 Chris Egener - Full-stack
 Yash Patel - Full-stack
 Azal Al-Mashta - Full-stack
+Siming Shen - Full-stack
 
 # Technologies
 MERN(MongoDB, Express, React.js, Node.js)
