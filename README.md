@@ -9,7 +9,7 @@ Creating a website that has many of the essential functions of any real estate w
 # Team Members:
 Chris Egener
 Yash Patel 
-Azal Al-Mashta 
+Azal Al\-Mashta 
 Siming Shen 
 
 # Technologies
