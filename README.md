@@ -1,7 +1,7 @@
 # Soen341-LT
 
 # Project
-Creating a website that has many of the essential functions of any real estate website, but additional extra features to increase the overall user experience.
+We are designing a website that will simplify the buying, selling, and renting market. With our sleek design and easy-to-use use interface you will be able to easily navigate the website. With our numerous sorting methods, you will be able to sort through all of the available listings down to only those that exactly match your criteria. 
 
 # Team Members:
 ## Chris Egener - Team Lead/Backend
