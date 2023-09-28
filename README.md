@@ -12,6 +12,7 @@ We are designing a website that will simplify the buying, selling, and renting m
 I am a software engineering student at Concordia University. I have experience in web development with HTML, JS, CSS and PHP. I am also experienced with Java, C++, C and Python. 
 
 ## Azal Al-Mashta - Full-stack
+  I am a software engineer student at Concordia University. I have web development experience with HTML, CSS, JS, and PHP. Otherwise I have mostly worked with object oriented programming languages, and have very little experience with web development.
 ## Siming Shen - Full-stack 
   I am a computer engineering student at Concordia University. I have experience with C++, Java. I was also Product Manager for one of my phone application project.
 
