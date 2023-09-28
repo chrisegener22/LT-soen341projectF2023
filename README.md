@@ -17,6 +17,9 @@ I am a software engineering student at Concordia University. I have experience i
   I am a computer engineering student at Concordia University. I have experience with C++, Java. I was also Product Manager for one of my phone application project.
 
 # Technologies
-MERN(MongoDB, Express, React.js, Node.js)
+##React.js
+##Vercel
+
 
 For the front-end frameworks, we looked at React, Angular and Vu.js. We wanted to use a framework that most of the team members hadn't used, as we were all looking to use this project as a learning opportunity for new frameworks. We eventually decided against React because we learned that it had a steeper learning curve than most, and as a team we felt that this project wasn't too appropriate. Furthermore, it's features such as the two-way data binding, dependency injection and external element decoupling weren't too useful for our project scale. 
+
