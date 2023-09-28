@@ -17,6 +17,5 @@ I am a software engineering student at Concordia University. I have experience i
   I am a computer engineering student at Concordia University. I have experience with C++, Java. I was also Product Manager for one of my phone application project.
 
 # Technologies
-MERN(MongoDB, Express, React.js, Node.js)
-
-For the front-end frameworks, we looked at React
+##React.js
+##Vercel
