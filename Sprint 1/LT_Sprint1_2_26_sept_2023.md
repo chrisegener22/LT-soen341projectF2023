@@ -12,8 +12,9 @@ Work Done:
 
 Decisions Made:
 - Decided to use MongoDB, Express, React.js, Node.js
-Next Steps:
+   - Chris has experience with this tech stack
 
+Next Steps:
 - Write Acceptance Criterions
 - Breakdown Task
 - Plan for sprint 2
