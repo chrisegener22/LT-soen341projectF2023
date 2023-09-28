@@ -14,7 +14,6 @@ I am a software engineering student at Concordia University. I have experience i
 ## Azal Al-Mashta - Full-stack
 ## Siming Shen - Full-stack 
   I am a computer engineering student at Concordia University. I have experience with C++, Java. I was also Product Manager for one of my phone application project.
-## Siming Shen 
 
 # Technologies
 MERN(MongoDB, Express, React.js, Node.js)
