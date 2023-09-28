@@ -1,4 +1,4 @@
-Date: 28/9/2023 Time: 4:15 pm - 
+Date: 28/9/2023 Time: 4:15 pm - 6:00 pm
 
 Participants:
 - Azal
@@ -10,8 +10,4 @@ Work Done:
 - Set up development environment
 - Began writing tasks
 
-Decisions Made:
-
-Next Steps:
-
-Next Meeting: 
+Next Meeting: 29/9/2023
