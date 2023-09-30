@@ -8,7 +8,7 @@ We are designing a website that will simplify the buying, selling, and renting m
   I am a software engineering major, I have experience in web development using technologies such as HTML, JS, React, and Next.
   I also have experience in the backend using technologies such as Java, c++, and Python. I have worked a bit with some server-side languages such as PHP.
 
-## Yash Patel - Full-stack
+## Yash Patel - Frontend
 I am a software engineering student at Concordia University. I have experience in web development with HTML, JS, CSS and PHP. I am also experienced with Java, C++, C and Python. 
 
 ## Azal Al-Mashta - Full-stack
