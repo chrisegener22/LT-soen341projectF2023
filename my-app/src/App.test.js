@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import Navbar from "./components/Navbar";
 import { MemoryRouter } from "react-router-dom";
 import App from "./App";
+import SearchBar from "./components/SearchBar";
 
 test("renders navbar", () => {
     render(
@@ -18,11 +19,7 @@ test("renders navbar", () => {
 });
 
 test("renders search bar", () => {
-    render(
-        <MemoryRouter>
-            <App />
-        </MemoryRouter>
-    );
+    render(<SearchBar />);
     // Check if the search bar is on the home page
     const searchBar = screen.getByPlaceholderText(
         /Enter region, city, street.../i
