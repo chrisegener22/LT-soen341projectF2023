@@ -8,7 +8,7 @@ dotenv.config();
 const MongoClient = mongodb.MongoClient;
 
 // Set server port
-// Conenct to 8000 if 5000 is unavailable
+// Connect to 8000 if 5000 is unavailable
 const port = process.env.PORT || 8000;
 
 // Connect to db
