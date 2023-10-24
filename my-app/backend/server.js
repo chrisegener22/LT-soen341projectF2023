@@ -1,6 +1,7 @@
 // imports
 import express from "express";
 import cors from "cors";
+import properties from "./api/properties.route.js";
 
 // Make express app
 const app = express();
