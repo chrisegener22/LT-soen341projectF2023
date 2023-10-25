@@ -2,9 +2,16 @@
 import express from "express";
 import "dotenv/config";
 import mongoose from "mongoose";
+import cors from "cors";
+import propertiesRoute from "./routes/propertiesRoute.js";
 
 // Create express app
 const app = express();
+
+// Middlewares
+app.use(express.json());
+app.use(cors);
+app.use("/api/properties", propertiesRoute); // handle each properties request with propertiesRoute
 
 // Connect to database
 mongoose
