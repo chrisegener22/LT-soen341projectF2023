@@ -26,6 +26,11 @@ const propertySchema = mongoose.Schema({
             required: true,
             maxLength: 2, // Only use abbreviations for provinces
         },
+        postalCode: {
+            type: String,
+            required: true,
+            maxLength: 6,
+        },
     },
     desc: {
         type: String,
