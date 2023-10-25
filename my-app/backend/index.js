@@ -8,10 +8,10 @@ import propertiesRoute from "./routes/propertiesRoute.js";
 // Create express app
 const app = express();
 
-// Middleware
+// Middlewares
 app.use(express.json());
 app.use(cors);
-app.use("/properties", propertiesRoute); // handle each properties request with propertiesRoute
+app.use("/api/properties", propertiesRoute); // handle each properties request with propertiesRoute
 
 // Connect to database
 mongoose
