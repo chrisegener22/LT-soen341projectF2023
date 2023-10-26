@@ -9,6 +9,14 @@ const Navbar = () => {
             </Link>
             <ul className="p-0 m-0 text-lg font-semibold list-none flex gap-4">
                 <li className="hover:bg-red-900">
+                    <Link
+                        to="/AddProperty"
+                        className="h-full flex items-center p-2"
+                    >
+                        Add Property
+                    </Link>
+                </li>
+                <li className="hover:bg-red-900">
                     <Link to="/" className="h-full flex items-center p-2">
                         Login
                     </Link>
