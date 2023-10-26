@@ -4,7 +4,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 
   display: flex;
   justify-content: center;
@@ -14,8 +14,8 @@
 .popup-inner {
     position: relative;
     padding: 88px;
-    height: 75%;
-    width: 75%;
+    height: 50%;
+    width: 50%;
     max-width: 550px;
     background-color: aliceblue;
 }
@@ -24,4 +24,56 @@
     position:absolute;
     top: 16px;
     right: 16px;
+    
+}
+
+.popup-inner .close-btn:hover{
+    cursor: pointer;
+}
+
+.popup-inner .login-txtbx{
+    position: relative;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    padding: 8px 0;
+    font-size: 1.25rem;
+    color: #333;
+    
+    margin: 16px 0;
+    
+}
+
+.popup-inner .pass-txtbx{
+    position: relative;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    padding: 8px 0;
+    font-size: 1.25rem;
+    color: #111111;
+    margin: 16px 0;
+    
+}
+
+.popup-inner .login-btn{
+    position:absolute;
+    font-weight: bold;
+    font-size:  1.5rem;   
+    bottom: 16px;
+    right: 16px;
+    
+}
+.popup-inner .login-btn:hover{
+    cursor: pointer;
+}
+
+.popup-inner .register-btn{
+    position:absolute;
+    font-weight: bold;
+    font-size:  1.5rem;   
+    bottom: 16px;
+    left: 16px;
 }

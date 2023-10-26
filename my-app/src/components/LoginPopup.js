@@ -11,6 +11,15 @@ function LoginPopup(props) {
 
                     <button className="close-btn"onClick={() => props.setTrigger(false)}>close</button>
                     <p>Login</p>
+                    <input className='login-txtbx' type="login" placeholder="Enter username" />
+                    <br></br>
+                    <input className='pass-txtbx' type="password" placeholder="Enter password" />
+                    <br></br>
+                    <button className='login-btn'>Login</button>
+                    <br></br>
+                    <button className='register-btn'>Register</button>
+                  
+
                 </div> 
         </div>
     ) : "";
