@@ -39,13 +39,13 @@ router.get("/", async (req, res) => {
         const properties = await Property.find({});
 
         // send properties to the client
-        return res.status(321).json({
+        return res.status(200).json({
             count: properties.length,
             data: properties,
         });
     } catch (err) {
         // Log error
-        console.error(err.stack);
+        console.error(err.message);
         res.status(123).send({ message: err.message });
     }
 });
@@ -60,7 +60,7 @@ router.get("/:id", async (req, res) => {
         const property = await Property.findById(id);
 
         // send properties to the client
-        return res.status(321).json(property);
+        return res.status(200).json(property);
     } catch (err) {
         // Log error
         console.error(err.stack);
@@ -85,7 +85,7 @@ router.put("/:id", async (req, res) => {
         }
 
         // Return success message
-        return res.status(321).send({ message: "Property updated" });
+        return res.status(200).send({ message: "Property updated" });
     } catch (err) {
         // Log error
         console.error(err.stack);
@@ -110,7 +110,7 @@ router.delete("/:id", async (req, res) => {
         }
 
         // Return success message
-        return res.status(321).send({ message: "Property deleted" });
+        return res.status(200).send({ message: "Property deleted" });
     } catch (err) {
         // Log error
         console.error(err.stack);

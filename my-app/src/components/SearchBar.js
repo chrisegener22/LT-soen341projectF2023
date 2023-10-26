@@ -1,8 +1,20 @@
 // Imports
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 const SearchBar = () => {
+    // For storing search results
+    const [searchResults, setSearchResults] = useState([]);
+
+    const fetchData = (input) => {
+        axios
+            .get("http://localhost:5000/api/properties")
+            .then((response) => console.log(response.data))
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     return (
         <div>
             <div className="flex justify-center my-20">
@@ -25,6 +37,7 @@ const SearchBar = () => {
                 <input
                     placeholder="Enter region, city, street..."
                     className="text-black rounded-lg w-1/2 h-16 outline outline-2 outline-red-500 px-3 drop-shadow-xl"
+                    onChange={(e) => fetchData(e)}
                 />
             </div>
         </div>
