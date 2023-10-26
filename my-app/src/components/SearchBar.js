@@ -14,12 +14,12 @@ const SearchBar = () => {
         // If search is empty, get all properties
         if (!search) {
             axios
-                .get("http://localhost:5000/api/properties")
+                .get("http://localhost:8080/api/properties")
                 .then((res) => setResultList(res.data.data))
                 .catch((err) => console.log(err));
         } else {
             axios
-                .get("http://localhost:5000/api/properties", {
+                .get("http://localhost:8080/api/properties", {
                     params: { search: search },
                 })
                 .then((res) => setResultList(res.data.data))
