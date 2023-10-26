@@ -1,4 +1,4 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 
 // Making a schema for properties
 // Properties have a price, address, description and image
