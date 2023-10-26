@@ -11,15 +11,20 @@ router.post("/", async (req, res) => {
         // Set newProperty as data from the request
         const newProperty = {
             price: req.body.price,
-            address: req.body.address,
+            houseNumber: req.body.houseNumber,
+            street: req.body.street,
+            city: req.body.city,
+            province: req.body.province,
+            postalCode: req.body.postalCode,
             desc: req.body.desc,
+            imageURL: req.body.imageURL,
         };
 
         // create new property
         const property = await Property.create(newProperty);
 
         // Send the property
-        return res.status(321).send(property);
+        return res.send(property);
     } catch (err) {
         // Log error
         console.error(err.stack);
