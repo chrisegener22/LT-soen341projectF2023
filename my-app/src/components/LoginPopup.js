@@ -1,13 +1,16 @@
 import React from 'react';
-
+import './LoginPopup.css';
 
 function LoginPopup(props) {
-    return (
-        <div className="popup">
-            <div className="popup-inner">
-                <button className="close-btn" onClick={props.closePopup}>X</button>
-                {props.content}
-            </div>
+    return (props.trigger) ? (
+        <div className='popup'>
+                <div className='popup-inner'>
+
+                    <button className="close-btn">close</button>
+                    <p>Login</p>
+                </div> 
         </div>
-    );
+    ) : "";
 }
+
+export default LoginPopup

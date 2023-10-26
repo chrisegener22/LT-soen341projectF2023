@@ -10,6 +10,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
             </Routes>
+            <LoginPopup trigger={true} />
+                
             <LoginPopup />
             
         </div>
