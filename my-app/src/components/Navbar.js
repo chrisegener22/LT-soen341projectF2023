@@ -23,6 +23,11 @@ const Navbar = () => {
                         Login
                     </Link>
                 </li>
+                <li className="hover:bg-red-900">
+                    <Link to="/Register" className="h-full flex items-center p-2">
+                        Register
+                    </Link>
+                </li>
             </ul>
         </nav>
     );
