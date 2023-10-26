@@ -15,7 +15,7 @@ function LoginPopup(props) {
                     <br></br>
                     <input className='pass-txtbx' type="password" placeholder="Enter password" />
                     <br></br>
-                    <button className='login-btn'>Login</button>
+                    <button className='login-btn'onClick= {() => props.setTrigger(false)}>Login</button>
                     <br></br>
                     <button className='register-btn'>Register</button>
                   
