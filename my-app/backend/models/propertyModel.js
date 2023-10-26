@@ -41,4 +41,11 @@ const propertySchema = mongoose.Schema({
     },
 });
 
+propertySchema.index({
+    street: "text",
+    city: "text",
+    province: "text",
+    postalCode: "text",
+});
+
 export const Property = mongoose.model("Property", propertySchema);
