@@ -1,7 +1,7 @@
 // Imports
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { PropertyCard } from "./PropertyCard";
+import axios from "axios";
 
 const SearchBar = () => {
     // Store search results in result list

@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import Navbar from "./components/Navbar";
 import { MemoryRouter } from "react-router-dom";
-import App from "./App";
 import SearchBar from "./components/SearchBar";
 
 test("renders navbar", () => {
