@@ -32,17 +32,33 @@ router.post("/", async (req, res) => {
     }
 });
 
-// Get method to get all properties
+// Get method to get all properties or search for one by queries
 router.get("/", async (req, res) => {
     try {
-        // get all properties
-        const properties = await Property.find({});
+        // Check if there is no query
+        if (Object.keys(req.query).length === 0) {
+            // get all properties
+            const properties = await Property.find({});
 
-        // send properties to the client
-        return res.status(200).json({
-            count: properties.length,
-            data: properties,
-        });
+            // send properties to the client
+            return res.status(200).json({
+                count: properties.length,
+                data: properties,
+            });
+        } else {
+            // Get properties that have the query
+            const properties = await Property.find({
+                $text: {
+                    $search: req.query.search,
+                },
+            });
+            console.log("found");
+            // send properties to the client
+            return res.status(200).json({
+                count: properties.length,
+                data: properties,
+            });
+        }
     } catch (err) {
         // Log error
         console.error(err.message);

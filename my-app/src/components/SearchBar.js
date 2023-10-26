@@ -1,19 +1,30 @@
 // Imports
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const SearchBar = () => {
-    // For storing search results
-    const [searchResults, setSearchResults] = useState([]);
+    // Store search results in result list
+    const [resultList, setResultList] = useState([]);
+    //Store search query
+    const [search, setSearch] = useState("");
 
-    const fetchData = (input) => {
-        axios
-            .get("http://localhost:5000/api/properties")
-            .then((response) => console.log(response.data))
-            .catch((error) => {
-                console.log(error);
-            });
-    };
+    // Call useEffect everytime we search
+    useEffect(() => {
+        // If search is empty, get all properties
+        if (!search) {
+            axios
+                .get("http://localhost:5000/api/properties")
+                .then((res) => setResultList(res.data.data))
+                .catch((err) => console.log(err));
+        } else {
+            axios
+                .get("http://localhost:5000/api/properties", {
+                    params: { search: search },
+                })
+                .then((res) => setResultList(res.data.data))
+                .catch((err) => console.log(err));
+        }
+    }, [search]);
 
     return (
         <div>
@@ -37,7 +48,7 @@ const SearchBar = () => {
                 <input
                     placeholder="Enter region, city, street..."
                     className="text-black rounded-lg w-1/2 h-16 outline outline-2 outline-red-500 px-3 drop-shadow-xl"
-                    onChange={(e) => fetchData(e)}
+                    onChange={(e) => setSearch(e.target.value)}
                 />
             </div>
         </div>
