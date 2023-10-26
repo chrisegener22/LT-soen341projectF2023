@@ -11,6 +11,7 @@ function App() {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/AddProperty" element={<AddProperty />} />
             </Routes>
 
             <button onClick={() => setButtonPopup(true)}>Login</button> 
