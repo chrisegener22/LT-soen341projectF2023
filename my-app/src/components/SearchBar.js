@@ -1,6 +1,7 @@
 // Imports
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { PropertyCard } from "./PropertyCard";
 
 const SearchBar = () => {
     // Store search results in result list
@@ -50,6 +51,9 @@ const SearchBar = () => {
                     className="text-black rounded-lg w-1/2 h-16 outline outline-2 outline-red-500 px-3 drop-shadow-xl"
                     onChange={(e) => setSearch(e.target.value)}
                 />
+            </div>
+            <div>
+                <PropertyCard properties={resultList} />
             </div>
         </div>
     );
