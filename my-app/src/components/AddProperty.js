@@ -29,7 +29,7 @@ export const AddProperty = () => {
 
         // Send data using axios
         axios
-            .post("http://localhost:5000/api/properties", data)
+            .post("http://localhost:8080/api/properties", data)
             .then(() => {
                 alert("Successfully added property");
             })
