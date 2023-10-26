@@ -10,7 +10,7 @@ export const PropertyCard = ({ properties }) => {
                 >
                     <img
                         src={property.imageURL}
-                        alt="Picture of a House"
+                        alt="House"
                         className="h-48 w-48 float-left mx-5"
                     />
                     <h1 className="text-lg font-bold text-green-800">
