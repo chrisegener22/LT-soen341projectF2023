@@ -19,7 +19,7 @@ const Navbar = () => {
                     </Link>
                 </li>
                 <li className="hover:bg-red-900">
-                    <Link to="/" className="h-full flex items-center p-2">
+                    <Link to="/Login" className="h-full flex items-center p-2">
                         Login
                     </Link>
                 </li>
