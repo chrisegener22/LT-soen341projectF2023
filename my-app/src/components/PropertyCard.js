@@ -1,4 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { AiOutlineFileSearch, AiOutlineEdit } from "react-icons/ai";
+import { BsTrash } from "react-icons/bs";
 
 export const PropertyCard = ({ properties }) => {
     return (
@@ -23,7 +26,29 @@ export const PropertyCard = ({ properties }) => {
                             {property.postalCode}
                         </h1>
                     </div>
-                    <div></div>
+                    <div className="flex flex-row justify-between relative top-16">
+                        <Link
+                            to={`/properties/details/${property._id}`}
+                            className="text-4xl"
+                            title="Details"
+                        >
+                            <AiOutlineFileSearch />
+                        </Link>
+                        <Link
+                            className="text-4xl"
+                            to={`/properties/update/${property._id}`}
+                            title="Edit"
+                        >
+                            <AiOutlineEdit />
+                        </Link>
+                        <Link
+                            className="text-4xl"
+                            title="Delete"
+                            to={`/properties/delete/${property._id}`}
+                        >
+                            <BsTrash />
+                        </Link>
+                    </div>
                 </div>
             ))}
         </div>
