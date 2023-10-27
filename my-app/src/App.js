@@ -6,6 +6,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import { PropertyDetails } from "./components/PropertyDetails";
 import { PropertyUpdate } from "./components/PropertyUpdate";
+import { PropertyDelete } from "./components/PropertyDelete";
 
 function App() {
     return (
@@ -23,6 +24,10 @@ function App() {
                 <Route
                     path="/properties/update/:id"
                     element={<PropertyUpdate />}
+                />
+                <Route
+                    path="/properties/delete/:id"
+                    element={<PropertyDelete />}
                 />
             </Routes>
         </div>

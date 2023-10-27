@@ -41,7 +41,11 @@ export const PropertyCard = ({ properties }) => {
                         >
                             <AiOutlineEdit />
                         </Link>
-                        <Link className="text-4xl" title="Delete">
+                        <Link
+                            className="text-4xl"
+                            title="Delete"
+                            to={`/properties/delete/${property._id}`}
+                        >
                             <BsTrash />
                         </Link>
                     </div>
