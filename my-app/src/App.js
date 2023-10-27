@@ -5,6 +5,8 @@ import { AddProperty } from "./components/AddProperty";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import { PropertyDetails } from "./components/PropertyDetails";
+import { PropertyUpdate } from "./components/PropertyUpdate";
+
 function App() {
     return (
         <div>
@@ -17,6 +19,10 @@ function App() {
                 <Route
                     path="/properties/details/:id"
                     element={<PropertyDetails />}
+                />
+                <Route
+                    path="/properties/update/:id"
+                    element={<PropertyUpdate />}
                 />
             </Routes>
         </div>

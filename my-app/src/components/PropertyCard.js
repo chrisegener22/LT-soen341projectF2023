@@ -30,13 +30,18 @@ export const PropertyCard = ({ properties }) => {
                         <Link
                             to={`/properties/details/${property._id}`}
                             className="text-4xl"
+                            title="Details"
                         >
                             <AiOutlineFileSearch />
                         </Link>
-                        <Link className="text-4xl">
+                        <Link
+                            className="text-4xl"
+                            to={`/properties/update/${property._id}`}
+                            title="Edit"
+                        >
                             <AiOutlineEdit />
                         </Link>
-                        <Link className="text-4xl">
+                        <Link className="text-4xl" title="Delete">
                             <BsTrash />
                         </Link>
                     </div>
