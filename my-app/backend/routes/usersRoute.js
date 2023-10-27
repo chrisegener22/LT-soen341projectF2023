@@ -9,7 +9,7 @@ router.post("/", async (req, res) => {
     try {
         //set new user from the data from the request
         const newUser = {
-            username: req.body.username,
+            userName: req.body.userName,
             email: req.body.email,
             password: req.body.password,
             isBroker: req.body.isBroker,
@@ -27,6 +27,5 @@ router.post("/", async (req, res) => {
         res.status(123).send({ message: err.message });
     }
 });
-
 
 export default router;

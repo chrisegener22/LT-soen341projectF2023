@@ -4,6 +4,7 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import cors from "cors";
 import propertiesRoute from "./routes/propertiesRoute.js";
+import usersRoute from "./routes/usersRoute.js";
 
 // Create express app
 const app = express();
@@ -12,6 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use("/api/properties", propertiesRoute); // handle each properties request with propertiesRoute
+app.use("/api/users", usersRoute);
 
 // Connect to database
 mongoose
