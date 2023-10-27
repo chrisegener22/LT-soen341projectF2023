@@ -5,7 +5,7 @@ import { User } from "../models/userModel.js";
 // Making router to handle requests
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/register", async (req, res) => {
     try {
         //set new user from the data from the request
         const newUser = {
@@ -25,6 +25,47 @@ router.post("/", async (req, res) => {
         //log error
         console.error(err.stack);
         res.status(123).send({ message: err.message });
+    }
+});
+
+// User sign-in
+router.post("/login", async (req, res) => {
+    try {
+        //takes in user email and password
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+
+        //verfies that the email and password exist and that they match as well
+        if (!user) {
+            return res.status(401).send({ message: "User not found." });
+        }
+        if (user.password !== password) {
+            return res.status(401).send({ message: "Invalid password." });
+        }
+
+        return res.send(user);
+        //catches any errors thrown
+    } catch (err) {
+        console.error(err.stack);
+        res.status(123).send({ message: "User login failed." });
+    }
+});
+
+// Save a property
+router.post("/save-property", async (req, res) => {
+    try {
+        //save property id and tour with the user ID on the database
+        const { userId, property_ID, tour_Date } = req.body;
+        const property = await Property.create({
+            userId,
+            property_ID,
+            tour_Date,
+        });
+        return res.send(property);
+        //error catching
+    } catch (err) {
+        console.error(err.stack);
+        res.status(123).send({ message: "Failed to save property." });
     }
 });
 
