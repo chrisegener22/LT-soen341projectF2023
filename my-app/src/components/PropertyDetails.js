@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { OfferForm } from "./OfferForm";
+import { Link } from "react-router-dom";
+
+
 
 export const PropertyDetails = () => {
     // storage for property and id
     const [property, setProperty] = useState({});
     const { id } = useParams();
+    const navigate = useNavigate();
 
     // Method to get the property by id
     useEffect(() => {
@@ -18,6 +24,13 @@ export const PropertyDetails = () => {
                 console.log(err);
             });
     }, [id]);
+
+    //Method to navigate to the offer form
+    const handleOfferForm = () => {
+        navigate(`/properties/details/${id}/offer-form`);
+        
+
+    };
 
     return (
         <div className="flex justify-center">
@@ -37,8 +50,18 @@ export const PropertyDetails = () => {
                         {property.postalCode}
                     </h1>
                     <h1 className="text-xl">Description: {property.desc}</h1>
+                    
+                    <button
+                        onClick={handleOfferForm}
+                        className="bg-blue-400 rounded-full w-1/5 h-10"
+                        Link to="/OfferForm"
+                        title="Submit Offer">
+                            Make an Offer
+                    </button>
+                    
                 </div>
             </div>
         </div>
     );
 };
+ 
