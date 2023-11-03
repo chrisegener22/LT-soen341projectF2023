@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { OfferForm } from "./OfferForm";
 import { Link } from "react-router-dom";
 
-
-
 export const PropertyDetails = () => {
     // storage for property and id
     const [property, setProperty] = useState({});
@@ -28,8 +26,6 @@ export const PropertyDetails = () => {
     //Method to navigate to the offer form
     const handleOfferForm = () => {
         navigate(`/properties/details/${id}/offer-form`);
-        
-
     };
 
     return (
@@ -50,18 +46,16 @@ export const PropertyDetails = () => {
                         {property.postalCode}
                     </h1>
                     <h1 className="text-xl">Description: {property.desc}</h1>
-                    
+
                     <button
                         onClick={handleOfferForm}
                         className="bg-blue-400 rounded-full w-1/5 h-10"
-                        Link to="/OfferForm"
-                        title="Submit Offer">
-                            Make an Offer
+                        title="Submit Offer"
+                    >
+                        Make an Offer
                     </button>
-                    
                 </div>
             </div>
         </div>
     );
 };
- 
