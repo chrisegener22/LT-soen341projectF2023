@@ -48,8 +48,10 @@ export const PropertyDetails = () => {
                     <h1 className="text-xl">Description: {property.desc}</h1>
 
                     <button
+                        
                         onClick={handleOfferForm}
-                        className="bg-blue-400 rounded-full w-1/5 h-10"
+                        
+                        className= "bg-blue-600 rounded-md py-2 mx-8 w-32 text-white text-sm font-medium mb-2 place-self-center"
                         title="Submit Offer"
                     >
                         Make an Offer
