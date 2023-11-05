@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { OfferForm } from "./OfferForm";
-import { Link } from "react-router-dom";
 
 export const PropertyDetails = () => {
     // storage for property and id
@@ -48,10 +46,8 @@ export const PropertyDetails = () => {
                     <h1 className="text-xl">Description: {property.desc}</h1>
 
                     <button
-                        
                         onClick={handleOfferForm}
-                        
-                        className= "bg-blue-600 rounded-md py-2 mx-8 w-32 text-white text-sm font-medium mb-2 place-self-center"
+                        className="bg-blue-600 rounded-md py-2 mx-8 w-32 text-white text-sm font-medium mb-2 place-self-center"
                         title="Submit Offer"
                     >
                         Make an Offer
