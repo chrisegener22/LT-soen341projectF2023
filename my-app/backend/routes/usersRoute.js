@@ -9,7 +9,8 @@ router.post("/register", async (req, res) => {
     try {
         //set new user from the data from the request
         const newUser = {
-            userName: req.body.userName,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             email: req.body.email,
             password: req.body.password,
             isBroker: req.body.isBroker,
