@@ -9,22 +9,22 @@ export const BrokerDelete = () => {
 
     const handleDeleteUser = () => {
         axios
-            .delete(`http://localhost:8080/api/properties/${id}`)
+            .delete(`http://localhost:8080/api/users/${id}`)
             .then(() => {
                 alert("Deleted Successfully");
-                navigate("/");
+                navigate("/Brokers");
             })
             .catch((err) => console.log(err));
     };
 
     const handleBackButton = () => {
-        navigate("/");
+        navigate("/Brokers");
     };
 
     return (
         <div className="flex flex-col border-2 mx-auto my-48 border-black w-1/2 rounded-xl p-2">
             <h1 className="flex justify-center">
-                Are you sure you want to delete this property?
+                Are you sure you want to delete this Broker?
             </h1>
             <div className="flex flex-row justify-around my-10">
                 <button
@@ -34,7 +34,7 @@ export const BrokerDelete = () => {
                     Back
                 </button>
                 <button
-                    onClick={handleDeleteProperty}
+                    onClick={handleDeleteUser}
                     className="bg-red-400 rounded-full w-1/3 h-10"
                 >
                     Delete

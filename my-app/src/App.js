@@ -9,6 +9,7 @@ import { PropertyDetails } from "./components/PropertyDetails";
 import { PropertyUpdate } from "./components/PropertyUpdate";
 import { PropertyDelete } from "./components/PropertyDelete";
 import { Brokers } from "./components/Brokers";
+import { BrokerDelete } from "./components/BrokerDelete";
 
 function App() {
     return (
@@ -36,6 +37,7 @@ function App() {
                     path="/properties/delete/:id"
                     element={<PropertyDelete />}
                 />
+                <Route path="/brokers/delete/:id" element={<BrokerDelete />} />
             </Routes>
         </div>
     );
