@@ -9,13 +9,15 @@ const Login = () => {
     const navigate = useNavigate();
     const { setAuth } = useAuth();
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         const data = { email, password };
-        axios
+        await axios
             .post("http://localhost:8080/api/users/login", data)
             .then((res) => {
                 const userData = atob(res.data.token.split(".")[1]);
                 sessionStorage.setItem("userData", userData);
+            })
+            .then(() => {
                 setAuth(true);
                 alert("Successful login");
                 navigate("/");
