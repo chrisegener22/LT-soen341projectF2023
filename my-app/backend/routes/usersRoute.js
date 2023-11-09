@@ -1,6 +1,7 @@
 // Imports
 import express from "express";
 import { User } from "../models/userModel.js";
+import jwt from "jsonwebtoken";
 
 // Making router to handle requests
 const router = express.Router();
@@ -9,7 +10,8 @@ router.post("/register", async (req, res) => {
     try {
         //set new user from the data from the request
         const newUser = {
-            userName: req.body.userName,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             email: req.body.email,
             password: req.body.password,
             isBroker: req.body.isBroker,
@@ -33,7 +35,7 @@ router.post("/login", async (req, res) => {
     try {
         //takes in user email and password
         const { email, password } = req.body;
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email: email });
 
         //verfies that the email and password exist and that they match as well
         if (!user) {
@@ -43,7 +45,19 @@ router.post("/login", async (req, res) => {
             return res.status(401).send({ message: "Invalid password." });
         }
 
-        return res.send(user);
+        // Give token to user for authentication
+        const token = jwt.sign(
+            {
+                id: user._id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                isBroker: user.isBroker,
+                isAdmin: user.isAdmin,
+            },
+            "123"
+        );
+        return res.json({ status: "good", token: token });
         //catches any errors thrown
     } catch (err) {
         console.error(err.stack);
