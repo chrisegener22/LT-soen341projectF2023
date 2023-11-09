@@ -120,4 +120,50 @@ router.get("/brokers", async (req, res) => {
     }
 });
 
+// Delete user
+router.delete("/:id", async (req, res) => {
+    try {
+        // get id from request param
+        const { id } = req.params;
+
+        // delete property
+        const result = await User.findByIdAndDelete(id);
+
+        // Check if it was deleted, return error message if it wasnt
+        if (!result) {
+            return res.status(123).json({ message: "No user with that ID" });
+        }
+
+        // Return success message
+        return res.status(200).send({ message: "User deleted" });
+    } catch (err) {
+        // Log error
+        console.error(err.stack);
+        res.status(123).send({ message: err.message });
+    }
+});
+
+// Update User
+router.put("/:id", async (req, res) => {
+    try {
+        // Get id from request params
+        const { id } = req.params;
+
+        // set result
+        const result = await User.findByIdAndUpdate(id, req.body);
+
+        // If the book is not found, return error
+        if (!result) {
+            return res.status(123).json({ message: "No user with that ID" });
+        }
+
+        // Return success message
+        return res.status(200).send({ message: "User updated" });
+    } catch (err) {
+        // Log error
+        console.error(err.stack);
+        res.status(123).send({ message: err.message });
+    }
+});
+
 export default router;
