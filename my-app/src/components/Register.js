@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
     // Fields that need to be set
@@ -9,6 +10,7 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [isBroker, setIsBroker] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
+    const navigate = useNavigate();
 
     const handleRegisterNonBroker = () => {
         const data = {
@@ -25,6 +27,7 @@ const Register = () => {
             .post("http://localhost:8080/api/users/register", data)
             .then(() => {
                 alert("Successfully registered");
+                navigate("/");
             })
             .catch((err) => {
                 alert("Failed to register");
@@ -45,7 +48,10 @@ const Register = () => {
         // Send data
         axios
             .post("http://localhost:8080/api/users/register", data)
-            .then(() => alert("Successfully registered"))
+            .then(() => {
+                alert("Successfully registered");
+                navigate("/");
+            })
             .catch((err) => {
                 alert("Failed to register");
                 console.log(err);
