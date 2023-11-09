@@ -166,4 +166,22 @@ router.put("/:id", async (req, res) => {
     }
 });
 
+// Get method to get specific users by id
+router.get("/:id", async (req, res) => {
+    try {
+        // Get id from request parameters
+        const { id } = req.params;
+
+        // get property with given id
+        const user = await User.findById(id);
+
+        // send properties to the client
+        return res.status(200).json(property);
+    } catch (err) {
+        // Log error
+        console.error(err.stack);
+        res.status(123).send({ message: err.message });
+    }
+});
+
 export default router;
