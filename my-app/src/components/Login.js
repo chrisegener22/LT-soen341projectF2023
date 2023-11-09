@@ -8,33 +8,27 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const { setAuth } = useAuth();
-
-    const setItemInSessionStorage = (key, value, callback) => {
-        try {
-            sessionStorage.setItem(key, value);
-            callback(); // Call the callback function after successfully setting the item
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    function storeDataInSessionStorage(key, data) {
+        sessionStorage.setItem(key, JSON.stringify(data));
+    }
 
     const handleLogin = async () => {
         const data = { email, password };
-        await axios
-            .post("http://localhost:8080/api/users/login", data)
-            .then((res) => {
-                const userData = atob(res.data.token.split(".")[1]);
-                setItemInSessionStorage("userData", userData, () => {
-                    console.log("Item stored successfully!");
-                    setAuth(true);
-                    alert("Successful login");
-                    navigate("/");
-                });
-            })
-            .catch((err) => {
-                alert("Failed to login");
-                console.log(err);
-            });
+        try {
+            const response = await axios.post(
+                "http://localhost:8080/api/users/login",
+                data
+            );
+            const userData = atob(response.data.token.split(".")[1]);
+            storeDataInSessionStorage("userData", userData);
+            console.log("Item stored successfully!");
+            setAuth(true);
+            alert("Successful login");
+            navigate("/");
+        } catch (err) {
+            alert("Failed to login");
+            console.log(err);
+        }
     };
 
     return (
