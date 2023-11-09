@@ -12,7 +12,7 @@ const Register = () => {
     const [isAdmin, setIsAdmin] = useState(false);
     const navigate = useNavigate();
 
-    const handleRegisterNonBroker = () => {
+    const handleRegister = () => {
         const data = {
             firstName,
             lastName,
@@ -28,29 +28,6 @@ const Register = () => {
             .then(() => {
                 alert("Successfully registered");
                 navigate("/Login");
-            })
-            .catch((err) => {
-                alert("Failed to register");
-                console.log(err);
-            });
-    };
-
-    const handleRegisterBroker = () => {
-        const data = {
-            firstName,
-            lastName,
-            email,
-            password,
-            isBroker,
-            isAdmin,
-        };
-
-        // Send data
-        axios
-            .post("http://localhost:8080/api/users/register", data)
-            .then(() => {
-                alert("Successfully registered");
-                navigate("/");
             })
             .catch((err) => {
                 alert("Failed to register");
@@ -109,20 +86,10 @@ const Register = () => {
                             onClick={() => {
                                 setIsBroker(false);
                                 setIsAdmin(false);
-                                handleRegisterNonBroker();
+                                handleRegister();
                             }}
                         >
                             Register
-                        </button>
-                        <button
-                            className="flex w-full mt-6 justify-center py-3 px-4 text-sm font-medium rounded-md text-white bg-blue-600"
-                            onClick={() => {
-                                setIsBroker(true);
-                                setIsAdmin(false);
-                                handleRegisterBroker();
-                            }}
-                        >
-                            Register as Broker
                         </button>
                     </div>
                 </div>
