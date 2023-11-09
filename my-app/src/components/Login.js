@@ -7,10 +7,7 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const { setAuth } = useAuth();
-    function storeDataInSessionStorage(key, data) {
-        sessionStorage.setItem(key, JSON.stringify(data));
-    }
+    const { setAuth, user } = useAuth();
 
     const handleLogin = async () => {
         const data = { email, password };
@@ -20,7 +17,10 @@ const Login = () => {
                 data
             );
             const userData = atob(response.data.token.split(".")[1]);
-            storeDataInSessionStorage("userData", userData);
+            sessionStorage.setItem("userData", userData);
+            while (user === null) {
+                console.log("not stored yet");
+            }
             console.log("Item stored successfully!");
             setAuth(true);
             alert("Successful login");
