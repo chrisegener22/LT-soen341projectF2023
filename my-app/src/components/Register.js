@@ -27,7 +27,7 @@ const Register = () => {
             .post("http://localhost:8080/api/users/register", data)
             .then(() => {
                 alert("Successfully registered");
-                navigate("/");
+                navigate("/Login");
             })
             .catch((err) => {
                 alert("Failed to register");

@@ -1,17 +1,22 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../utils/AuthContext";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const { setAuth } = useAuth();
 
     const handleLogin = () => {
         const data = { email, password };
         axios
             .post("http://localhost:8080/api/users/login", data)
-            .then(() => {
+            .then((res) => {
+                const userData = atob(res.data.token.split(".")[1]);
+                sessionStorage.setItem("userData", userData);
+                setAuth(true);
                 alert("Successful login");
                 navigate("/");
             })
