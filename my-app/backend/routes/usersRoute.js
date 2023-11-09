@@ -83,4 +83,41 @@ router.post("/save-property", async (req, res) => {
     }
 });
 
+// Get brokers or search for one
+router.get("/brokers", async (req, res) => {
+    try {
+        // If no queries, get all brokers
+        if (Object.keys(req.query).length === 0) {
+            const users = await User.find({
+                isBroker: true,
+                isAdmin: false,
+            });
+
+            // send to client
+            return res.status(200).json({
+                count: users.length,
+                data: users,
+            });
+        } else {
+            // Use query to find person
+            const users = await User.find({
+                isBroker: true,
+                isAdmin: false,
+                $text: {
+                    $search: req.query.search,
+                },
+            });
+            // send to client
+            return res.status(200).json({
+                count: users.length,
+                data: users,
+            });
+        }
+    } catch (err) {
+        // Log error
+        console.error(err.message);
+        res.status(123).send({ message: err.message });
+    }
+});
+
 export default router;
