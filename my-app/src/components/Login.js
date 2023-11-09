@@ -9,18 +9,27 @@ const Login = () => {
     const navigate = useNavigate();
     const { setAuth } = useAuth();
 
+    const setItemInSessionStorage = (key, value, callback) => {
+        try {
+            sessionStorage.setItem(key, value);
+            callback(); // Call the callback function after successfully setting the item
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     const handleLogin = async () => {
         const data = { email, password };
         await axios
             .post("http://localhost:8080/api/users/login", data)
             .then((res) => {
                 const userData = atob(res.data.token.split(".")[1]);
-                sessionStorage.setItem("userData", userData);
-            })
-            .then(() => {
-                setAuth(true);
-                alert("Successful login");
-                navigate("/");
+                setItemInSessionStorage("userData", userData, () => {
+                    console.log("Item stored successfully!");
+                    setAuth(true);
+                    alert("Successful login");
+                    navigate("/");
+                });
             })
             .catch((err) => {
                 alert("Failed to login");
