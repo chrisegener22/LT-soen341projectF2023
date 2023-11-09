@@ -21,6 +21,14 @@ const Navbar = () => {
             </Link>
             {/* Nav bar item that are going to be on the right side */}
             <ul className="p-0 m-0 text-lg font-semibold list-none flex gap-4">
+                <li className="hover:bg-red-900">
+                    <Link
+                        to="/Brokers"
+                        className="h-full flex items-center p-2"
+                    >
+                        Brokers
+                    </Link>
+                </li>
                 {auth && user.isBroker ? (
                     <li className="hover:bg-red-900">
                         <Link

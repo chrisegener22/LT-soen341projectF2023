@@ -11,7 +11,7 @@ export const PropertyCard = ({ properties }) => {
         <div className="grid grid-cols-3 items-center">
             {properties.map((property, index) => (
                 <div
-                    key="property._id"
+                    key={property._id}
                     className="border-2 border-black rounded-xl relative p-4 m-4"
                 >
                     <img
