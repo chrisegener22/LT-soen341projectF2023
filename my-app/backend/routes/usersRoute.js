@@ -54,9 +54,9 @@ router.post("/login", async (req, res) => {
                 isBroker: user.isBroker,
                 isAdmin: user.isAdmin,
             },
-            "secret123"
+            "123"
         );
-        return res.json({ status: "good", user: token });
+        return res.json({ status: "good", token: token });
         //catches any errors thrown
     } catch (err) {
         console.error(err.stack);
