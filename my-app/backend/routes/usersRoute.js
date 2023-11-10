@@ -16,6 +16,9 @@ router.post("/register", async (req, res) => {
             password: req.body.password,
             isBroker: req.body.isBroker,
             isAdmin: req.body.isAdmin,
+            phone_number: req.body.phone_number,
+            license_number: req.body.license_number,
+            agency: req.body.agency,
         };
 
         //create new user
