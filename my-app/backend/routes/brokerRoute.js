@@ -1,5 +1,5 @@
 import { Express } from "express";
-import { BrokerController } from "../models/brokerModel";
+import Broker from "../models/brokerModel.js";
 
 const router = Express.Router();
 
@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
             imageURL: req.body.imageURL,
         };
 
-        const broker = await BrokerController.create(newBroker);
+        const broker = await Broker.create(newBroker);
 
         return res.send(broker);
     } catch (err) {

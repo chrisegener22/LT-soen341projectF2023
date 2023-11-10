@@ -13,7 +13,7 @@ export const BrokerCard = ({ brokers }) => {
         
     //Navigate to the broker details page
     const handleBrokerDetails = () => {
-        navigate(`/brokers/${id}/details/`);
+        navigate(`/brokers/${id}/details`);
     };
 
 
