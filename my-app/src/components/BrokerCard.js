@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineEdit, AiOutlineFileSearch } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { useAuth } from "../utils/AuthContext";
 
@@ -43,6 +43,13 @@ export const BrokerCard = ({ brokers }) => {
                         ) : (
                             <div> </div>
                         )}
+                        <Link
+                            className="text-4xl"
+                            title="Details"
+                            to={`/brokers/details/${broker._id}`}
+                        >
+                            <AiOutlineFileSearch />
+                        </Link>
                     </div>
                 </div>
             ))}
