@@ -9,8 +9,8 @@ const Navbar = () => {
     const logout = () => {
         setAuth(false);
         sessionStorage.removeItem("userData");
-        alert("Successfully logged out");
         navigate("/");
+        alert("Successfully logged out");
     };
 
     if (isLoading) {
@@ -42,12 +42,8 @@ const Navbar = () => {
                             Add Property
                         </Link>
                     </li>
-                ) : (
-                    <div></div>
-                )}
-                {auth ? (
-                    <div></div>
-                ) : (
+                ) : null}
+                {auth ? null : (
                     <li className="hover:bg-red-900">
                         <Link
                             to="/Login"
@@ -57,9 +53,7 @@ const Navbar = () => {
                         </Link>
                     </li>
                 )}
-                {auth ? (
-                    <div></div>
-                ) : (
+                {auth ? null : (
                     <li className="hover:bg-red-900">
                         <Link
                             to="/Register"
@@ -69,16 +63,14 @@ const Navbar = () => {
                         </Link>
                     </li>
                 )}
-                {!auth ? (
-                    <div></div>
-                ) : (
+                {!auth ? null : (
                     <li className="hover:bg-red-900">
-                        <Link
+                        <button
                             className="h-full flex items-center p-2"
                             onClick={logout}
                         >
                             Logout
-                        </Link>
+                        </button>
                     </li>
                 )}
             </ul>

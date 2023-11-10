@@ -45,9 +45,7 @@ export const PropertyCard = ({ properties }) => {
                             >
                                 <AiOutlineEdit />
                             </Link>
-                        ) : (
-                            <div> </div>
-                        )}
+                        ) : null}
                         {auth && user.isBroker ? (
                             <Link
                                 className="text-4xl"
@@ -56,9 +54,7 @@ export const PropertyCard = ({ properties }) => {
                             >
                                 <BsTrash />
                             </Link>
-                        ) : (
-                            <div> </div>
-                        )}
+                        ) : null}
                     </div>
                 </div>
             ))}

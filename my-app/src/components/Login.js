@@ -18,8 +18,8 @@ const Login = () => {
             );
             const userData = atob(response.data.token.split(".")[1]);
             sessionStorage.setItem("userData", userData);
-            alert("Logged in successfully");
             setAuth(true);
+            alert("Logged in successfully");
             navigate("/");
         } catch (err) {
             alert("Failed to login");

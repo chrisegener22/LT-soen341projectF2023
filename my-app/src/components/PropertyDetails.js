@@ -54,9 +54,7 @@ export const PropertyDetails = () => {
                         >
                             Make an Offer
                         </button>
-                    ) : (
-                        <div></div>
-                    )}
+                    ) : null}
                 </div>
             </div>
         </div>
