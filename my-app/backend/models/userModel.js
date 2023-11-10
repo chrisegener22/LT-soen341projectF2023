@@ -28,12 +28,26 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         required: true,
     },
+    phone_number: {
+        type: Number,
+        required: true,
+        unique: true,
+    },
+    license_number: {
+        type: Number,
+        unique: true,
+    },
+    agency: {
+        type: String,
+    },
 });
 
 userSchema.index({
     firstName: "text",
     lastName: "text",
     email: "text",
+    agency: "text",
+    phone_number: "text",
 });
 
 export const User = mongoose.model("User", userSchema);
