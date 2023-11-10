@@ -176,7 +176,7 @@ router.get("/:id", async (req, res) => {
         const user = await User.findById(id);
 
         // send properties to the client
-        return res.status(200).json(property);
+        return res.status(200).json(user);
     } catch (err) {
         // Log error
         console.error(err.stack);

@@ -62,6 +62,7 @@ export const BrokerUpdate = () => {
                 </div>
                 <div className="flex-col mt-8">
                     <div>
+                        <label className="font-bold">First Name</label>
                         <input
                             type="text"
                             required
@@ -73,6 +74,7 @@ export const BrokerUpdate = () => {
                     </div>
                     <div>
                         <div>
+                            <label className="font-bold">Last Name</label>
                             <input
                                 type="text"
                                 required
@@ -82,6 +84,7 @@ export const BrokerUpdate = () => {
                                 onChange={(e) => setLastName(e.target.value)}
                             />
                         </div>
+                        <label className="font-bold">Email</label>
                         <input
                             type="email"
                             required
@@ -92,25 +95,15 @@ export const BrokerUpdate = () => {
                         />
                     </div>
                     <div>
-                        <input
-                            type="text"
-                            required
-                            className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
-                    <div>
                         <button
                             className="flex w-full mt-6 justify-center py-3 px-4 text-sm font-medium rounded-md text-white bg-blue-600"
                             onClick={() => {
                                 setIsBroker(false);
                                 setIsAdmin(false);
-                                handleRegister();
+                                handleUpdateUser();
                             }}
                         >
-                            Register
+                            Update
                         </button>
                     </div>
                 </div>
