@@ -41,7 +41,7 @@ function App() {
                     element={<PropertyDelete />}
                 />
                 <Route
-                    path="/brokers/:id/details"
+                    path="/brokers/details/:id"
                     element={<BrokerDetails />}
                 />
                 <Route path="/brokers/delete/:id" element={<BrokerDelete />} />
