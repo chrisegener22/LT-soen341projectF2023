@@ -8,8 +8,11 @@ import OfferForm from "./components/OfferForm";
 import { PropertyDetails } from "./components/PropertyDetails";
 import { PropertyUpdate } from "./components/PropertyUpdate";
 import { PropertyDelete } from "./components/PropertyDelete";
-import OfferDetails from "./components/OfferDetails";
+import { BrokerDetails } from "./components/BrokerDetails";
 import { Brokers } from "./components/Brokers";
+import { BrokerDelete } from "./components/BrokerDelete";
+import { BrokerUpdate } from "./components/BrokerUpdate";
+import { BrokerAdd } from "./components/BrokerAdd";
 
 function App() {
     return (
@@ -38,9 +41,12 @@ function App() {
                     element={<PropertyDelete />}
                 />
                 <Route
-                    path="/properties/offers/:propertyId/offer-details/:offerId"
-                    element={<OfferDetails />}
+                    path="/brokers/details/:id"
+                    element={<BrokerDetails />}
                 />
+                <Route path="/brokers/delete/:id" element={<BrokerDelete />} />
+                <Route path="/brokers/update/:id" element={<BrokerUpdate />} />
+                <Route path="/brokers/add" element={<BrokerAdd />} />
             </Routes>
         </div>
     );

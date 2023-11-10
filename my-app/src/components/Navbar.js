@@ -3,15 +3,19 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
 
 const Navbar = () => {
-    const { setAuth, auth, user } = useAuth();
+    const { setAuth, auth, user, isLoading } = useAuth();
     const navigate = useNavigate();
 
     const logout = () => {
         setAuth(false);
         sessionStorage.removeItem("userData");
-        alert("Successfully logged out");
         navigate("/");
+        alert("Successfully logged out");
     };
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <nav className="bg-red-500 text-white flex justify-between items-stretch gap-10 px-4">
@@ -38,12 +42,8 @@ const Navbar = () => {
                             Add Property
                         </Link>
                     </li>
-                ) : (
-                    <div></div>
-                )}
-                {auth ? (
-                    <div></div>
-                ) : (
+                ) : null}
+                {auth ? null : (
                     <li className="hover:bg-red-900">
                         <Link
                             to="/Login"
@@ -53,9 +53,7 @@ const Navbar = () => {
                         </Link>
                     </li>
                 )}
-                {auth ? (
-                    <div></div>
-                ) : (
+                {auth ? null : (
                     <li className="hover:bg-red-900">
                         <Link
                             to="/Register"
@@ -65,16 +63,14 @@ const Navbar = () => {
                         </Link>
                     </li>
                 )}
-                {!auth ? (
-                    <div></div>
-                ) : (
+                {!auth ? null : (
                     <li className="hover:bg-red-900">
-                        <Link
+                        <button
                             className="h-full flex items-center p-2"
                             onClick={logout}
                         >
                             Logout
-                        </Link>
+                        </button>
                     </li>
                 )}
             </ul>

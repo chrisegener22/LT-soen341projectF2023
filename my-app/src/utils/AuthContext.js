@@ -14,21 +14,25 @@ export const useAuth = () => useContext(AuthContext);
 const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useState(null);
     const [user, setUser] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     // Check if user data was received from server
     useEffect(() => {
         try {
-            const userData = JSON.parse(sessionStorage.getItem("userData"));
-            setUser(userData);
+            const userData = sessionStorage.getItem("userData");
+            if (userData) {
+                setUser(JSON.parse(userData));
+            }
+            setIsLoading(false);
         } catch (err) {
             setUser(null);
             console.log(err);
         }
-    }, [auth]);
+    }, []);
 
     // Provide context to all children
     return (
-        <AuthContext.Provider value={{ auth, setAuth, user }}>
+        <AuthContext.Provider value={{ auth, setAuth, user, isLoading }}>
             {children}
         </AuthContext.Provider>
     );
