@@ -9,8 +9,11 @@ export const BrokerUpdate = () => {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [isBroker, setIsBroker] = useState(null);
-    const [isAdmin, setIsAdmin] = useState(null);
+    const [isBroker] = useState(true);
+    const [isAdmin] = useState(false);
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [licenseNumber, setLicenseNumber] = useState("");
+    const [agency, setAgency] = useState("");
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -23,8 +26,9 @@ export const BrokerUpdate = () => {
                 setLastName(res.data.lastName);
                 setEmail(res.data.email);
                 setPassword(res.data.password);
-                setIsBroker(res.data.isBroker);
-                setIsAdmin(res.data.isAdmin);
+                setPhoneNumber(res.data.phoneNumber);
+                setLicenseNumber(res.data.licenseNumber);
+                setAgency(res.data.agency);
             })
             .catch((err) => console.log(err));
     }, [id]);
@@ -37,6 +41,9 @@ export const BrokerUpdate = () => {
             password,
             isBroker,
             isAdmin,
+            phoneNumber,
+            licenseNumber,
+            agency,
         };
 
         // Send data
@@ -73,17 +80,17 @@ export const BrokerUpdate = () => {
                         />
                     </div>
                     <div>
-                        <div>
-                            <label className="font-bold">Last Name</label>
-                            <input
-                                type="text"
-                                required
-                                className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
-                                placeholder="Last Name"
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
-                            />
-                        </div>
+                        <label className="font-bold">Last Name</label>
+                        <input
+                            type="text"
+                            required
+                            className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
+                            placeholder="Last Name"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                        />
+                    </div>
+                    <div>
                         <label className="font-bold">Email</label>
                         <input
                             type="email"
@@ -95,11 +102,42 @@ export const BrokerUpdate = () => {
                         />
                     </div>
                     <div>
+                        <label className="font-bold">Phone Number</label>
+                        <input
+                            type="text"
+                            required
+                            className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
+                            placeholder="Phone Number"
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <label className="font-bold">License Number</label>
+                        <input
+                            type="text"
+                            required
+                            className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
+                            placeholder="License Number"
+                            value={licenseNumber}
+                            onChange={(e) => setLicenseNumber(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <label className="font-bold">Agency</label>
+                        <input
+                            type="text"
+                            required
+                            className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
+                            placeholder="Agency"
+                            value={agency}
+                            onChange={(e) => setAgency(e.target.value)}
+                        />
+                    </div>
+                    <div>
                         <button
                             className="flex w-full mt-6 justify-center py-3 px-4 text-sm font-medium rounded-md text-white bg-blue-600"
                             onClick={() => {
-                                setIsBroker(false);
-                                setIsAdmin(false);
                                 handleUpdateUser();
                             }}
                         >
