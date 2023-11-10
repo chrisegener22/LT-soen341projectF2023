@@ -29,7 +29,7 @@ export const PropertyCard = ({ properties }) => {
                             {property.postalCode}
                         </h1>
                     </div>
-                    <div className="flex flex-row justify-between relative top-16">
+                    <div className="flex flex-row justify-around">
                         <Link
                             to={`/properties/details/${property._id}`}
                             className="text-4xl"
@@ -45,9 +45,7 @@ export const PropertyCard = ({ properties }) => {
                             >
                                 <AiOutlineEdit />
                             </Link>
-                        ) : (
-                            <div> </div>
-                        )}
+                        ) : null}
                         {auth && user.isBroker ? (
                             <Link
                                 className="text-4xl"
@@ -56,9 +54,7 @@ export const PropertyCard = ({ properties }) => {
                             >
                                 <BsTrash />
                             </Link>
-                        ) : (
-                            <div> </div>
-                        )}
+                        ) : null}
                     </div>
                 </div>
             ))}
