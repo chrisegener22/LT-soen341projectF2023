@@ -3,10 +3,13 @@ import mongoose from "mongoose";
 // Schema for users
 
 const userSchema = mongoose.Schema({
-    userName: {
+    firstName: {
         type: String,
         required: true,
-        unique: true,
+    },
+    lastName: {
+        type: String,
+        required: true,
     },
     email: {
         type: String,
@@ -25,6 +28,12 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         required: true,
     },
+});
+
+userSchema.index({
+    firstName: "text",
+    lastName: "text",
+    email: "text",
 });
 
 export const User = mongoose.model("User", userSchema);

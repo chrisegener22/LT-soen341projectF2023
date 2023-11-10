@@ -9,7 +9,7 @@ import { PropertyDetails } from "./components/PropertyDetails";
 import { PropertyUpdate } from "./components/PropertyUpdate";
 import { PropertyDelete } from "./components/PropertyDelete";
 import OfferDetails from "./components/OfferDetails";
-
+import { Brokers } from "./components/Brokers";
 
 function App() {
     return (
@@ -20,9 +20,11 @@ function App() {
                 <Route path="/AddProperty" element={<AddProperty />} />
                 <Route path="/Register" element={<Register />} />
                 <Route path="/Login" element={<Login />} />
-                <Route 
-                    path="/properties/details/:id/offer-form" 
-                    element={<OfferForm />} />
+                <Route path="/Brokers" element={<Brokers />} />
+                <Route
+                    path="/properties/details/:id/offer-form"
+                    element={<OfferForm />}
+                />
                 <Route
                     path="/properties/details/:id"
                     element={<PropertyDetails />}

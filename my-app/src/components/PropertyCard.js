@@ -2,13 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineFileSearch, AiOutlineEdit } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
+import { useAuth } from "../utils/AuthContext";
 
 export const PropertyCard = ({ properties }) => {
+    const { auth, user } = useAuth();
+
     return (
         <div className="grid grid-cols-3 items-center">
             {properties.map((property, index) => (
                 <div
-                    key="property._id"
+                    key={property._id}
                     className="border-2 border-black rounded-xl relative p-4 m-4"
                 >
                     <img
@@ -34,20 +37,28 @@ export const PropertyCard = ({ properties }) => {
                         >
                             <AiOutlineFileSearch />
                         </Link>
-                        <Link
-                            className="text-4xl"
-                            to={`/properties/update/${property._id}`}
-                            title="Edit"
-                        >
-                            <AiOutlineEdit />
-                        </Link>
-                        <Link
-                            className="text-4xl"
-                            title="Delete"
-                            to={`/properties/delete/${property._id}`}
-                        >
-                            <BsTrash />
-                        </Link>
+                        {auth && user.isBroker ? (
+                            <Link
+                                className="text-4xl"
+                                to={`/properties/update/${property._id}`}
+                                title="Edit"
+                            >
+                                <AiOutlineEdit />
+                            </Link>
+                        ) : (
+                            <div> </div>
+                        )}
+                        {auth && user.isBroker ? (
+                            <Link
+                                className="text-4xl"
+                                title="Delete"
+                                to={`/properties/delete/${property._id}`}
+                            >
+                                <BsTrash />
+                            </Link>
+                        ) : (
+                            <div> </div>
+                        )}
                     </div>
                 </div>
             ))}
