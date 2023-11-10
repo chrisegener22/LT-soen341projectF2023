@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
 
 const Navbar = () => {
-    const { setAuth, auth, user } = useAuth();
+    const { setAuth, auth, user, isLoading } = useAuth();
     const navigate = useNavigate();
 
     const logout = () => {
@@ -12,6 +12,10 @@ const Navbar = () => {
         alert("Successfully logged out");
         navigate("/");
     };
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <nav className="bg-red-500 text-white flex justify-between items-stretch gap-10 px-4">

@@ -7,7 +7,7 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const { setAuth, user } = useAuth();
+    const { setAuth } = useAuth();
 
     const handleLogin = async () => {
         const data = { email, password };
@@ -18,12 +18,8 @@ const Login = () => {
             );
             const userData = atob(response.data.token.split(".")[1]);
             sessionStorage.setItem("userData", userData);
-            console.log("Item stored successfully!");
+            alert("Logged in successfully");
             setAuth(true);
-            alert("Successful login");
-            while (user === null) {
-                console.log("User not saved yet");
-            }
             navigate("/");
         } catch (err) {
             alert("Failed to login");
