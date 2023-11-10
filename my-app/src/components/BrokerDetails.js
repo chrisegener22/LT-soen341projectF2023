@@ -10,8 +10,14 @@ export const BrokerDetails = () => {
 
     // storage for broker information
 
-    
     const [broker, setBroker] = useState({});
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+    const [liscenceNumber, setLiscenceNumber] = useState("");
+    const [agency, setAgency] = useState("");
+    const [imageURL, setImageURL] = useState("");
     const { id } = useParams();
     const navigate = useNavigate();
     const { auth, user } = useAuth();
