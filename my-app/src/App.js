@@ -11,6 +11,7 @@ import { PropertyDelete } from "./components/PropertyDelete";
 import { Brokers } from "./components/Brokers";
 import { BrokerDelete } from "./components/BrokerDelete";
 import { BrokerUpdate } from "./components/BrokerUpdate";
+import { BrokerAdd } from "./components/BrokerAdd";
 
 function App() {
     return (
@@ -40,6 +41,7 @@ function App() {
                 />
                 <Route path="/brokers/delete/:id" element={<BrokerDelete />} />
                 <Route path="/brokers/update/:id" element={<BrokerUpdate />} />
+                <Route path="/brokers/add" element={<BrokerAdd />} />
             </Routes>
         </div>
     );

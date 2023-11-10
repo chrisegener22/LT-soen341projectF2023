@@ -28,11 +28,11 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         required: true,
     },
-    phone_number: {
+    phoneNumber: {
         type: Number,
         unique: true,
     },
-    license_number: {
+    licenseNumber: {
         type: Number,
         unique: true,
     },
