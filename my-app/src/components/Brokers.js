@@ -3,6 +3,8 @@ import { BrokerCard } from "./BrokerCard";
 import axios from "axios";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { BrokerDetails } from "./BrokerDetails";
+
 
 export const Brokers = () => {
     // Store search results in result list
