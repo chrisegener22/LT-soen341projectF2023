@@ -16,6 +16,9 @@ router.post("/register", async (req, res) => {
             password: req.body.password,
             isBroker: req.body.isBroker,
             isAdmin: req.body.isAdmin,
+            phoneNumber: req.body.phoneNumber,
+            licenseNumber: req.body.licenseNumber,
+            agency: req.body.agency,
         };
 
         //create new user
@@ -116,6 +119,70 @@ router.get("/brokers", async (req, res) => {
     } catch (err) {
         // Log error
         console.error(err.message);
+        res.status(123).send({ message: err.message });
+    }
+});
+
+// Delete user
+router.delete("/:id", async (req, res) => {
+    try {
+        // get id from request param
+        const { id } = req.params;
+
+        // delete property
+        const result = await User.findByIdAndDelete(id);
+
+        // Check if it was deleted, return error message if it wasnt
+        if (!result) {
+            return res.status(123).json({ message: "No user with that ID" });
+        }
+
+        // Return success message
+        return res.status(200).send({ message: "User deleted" });
+    } catch (err) {
+        // Log error
+        console.error(err.stack);
+        res.status(123).send({ message: err.message });
+    }
+});
+
+// Update User
+router.put("/:id", async (req, res) => {
+    try {
+        // Get id from request params
+        const { id } = req.params;
+
+        // set result
+        const result = await User.findByIdAndUpdate(id, req.body);
+
+        // If the book is not found, return error
+        if (!result) {
+            return res.status(123).json({ message: "No user with that ID" });
+        }
+
+        // Return success message
+        return res.status(200).send({ message: "User updated" });
+    } catch (err) {
+        // Log error
+        console.error(err.stack);
+        res.status(123).send({ message: err.message });
+    }
+});
+
+// Get method to get specific users by id
+router.get("/:id", async (req, res) => {
+    try {
+        // Get id from request parameters
+        const { id } = req.params;
+
+        // get property with given id
+        const user = await User.findById(id);
+
+        // send properties to the client
+        return res.status(200).json(user);
+    } catch (err) {
+        // Log error
+        console.error(err.stack);
         res.status(123).send({ message: err.message });
     }
 });
