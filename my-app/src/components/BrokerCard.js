@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineEdit, AiOutlineFileSearch } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { useAuth } from "../utils/AuthContext";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
 export const BrokerCard = ({ brokers }) => {
+<<<<<<< HEAD
     
     const { id } = useParams();
     const navigate = useNavigate();
@@ -17,6 +16,8 @@ export const BrokerCard = ({ brokers }) => {
     };
 
 
+=======
+>>>>>>> 84c4c23223206c413dd999334c49161ed344a8ba
     const { auth, user } = useAuth();
 
     return (
@@ -55,18 +56,14 @@ export const BrokerCard = ({ brokers }) => {
                         ) : (
                             <div> </div>
                         )}
-                    
-                    </div>
-                    <div>
-                        <button
-                            onClick={handleBrokerDetails}
-                            className="bg-slate-400 rounded-md py-2 w-32 text-white text-sm font-medium mb-2 justify-self-start"
-                            title="Broker Details"
+                        <Link
+                            className="text-4xl"
+                            title="Details"
+                            to={`/brokers/details/${broker._id}`}
                         >
-                            Details
-                        </button>
+                            <AiOutlineFileSearch />
+                        </Link>
                     </div>
-
                 </div>
             ))}
         </div>

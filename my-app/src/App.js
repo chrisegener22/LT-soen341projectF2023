@@ -40,6 +40,16 @@ function App() {
                     path="/properties/delete/:id"
                     element={<PropertyDelete />}
                 />
+<<<<<<< HEAD
+=======
+                <Route
+                    path="/brokers/details/:id"
+                    element={<BrokerDetails />}
+                />
+                <Route path="/brokers/delete/:id" element={<BrokerDelete />} />
+                <Route path="/brokers/update/:id" element={<BrokerUpdate />} />
+                <Route path="/brokers/add" element={<BrokerAdd />} />
+>>>>>>> 84c4c23223206c413dd999334c49161ed344a8ba
             </Routes>
         </div>
     );
