@@ -29,7 +29,7 @@ export const PropertyCard = ({ properties }) => {
                             {property.postalCode}
                         </h1>
                     </div>
-                    <div className="flex flex-row justify-between relative top-16">
+                    <div className="flex flex-row justify-around">
                         <Link
                             to={`/properties/details/${property._id}`}
                             className="text-4xl"
