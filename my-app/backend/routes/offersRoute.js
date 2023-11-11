@@ -1,0 +1,71 @@
+// Imports
+import express from "express";
+import { Offer } from "../models/offerModel";
+
+// Making router to handle requests
+const router = express.Router();
+
+// Post method to save offer
+router.post("/", async (req, res) => {
+    try {
+        // Set newProperty as data from the request
+        const newOffer = {
+            brokerID: req.body.brokerID,
+            buyerName: req.body.buyerName,
+            buyerAddress: req.body.buyerAddress,
+            buyerEmail: req.body.buyerEmail,
+            propertyID: req.body.propertyID,
+            offeredPrice: req.body.offeredPrice,
+            dosDate: req.body.dosDate,
+            oopDate: req.body.oopDate,
+        };
+
+        // create new property
+        const offer = await Offer.create(newOffer);
+
+        // Send the property
+        return res.send(offer);
+    } catch (err) {
+        // Log error
+        console.error(err.stack);
+        res.status(123).send({ message: err.message });
+    }
+});
+
+// Get method to get all offers
+router.get("/", async (req, res) => {
+    try {
+        // get all offers
+        const offers = await Offer.find({});
+
+        // send offers to the client
+        return res.status(200).json({
+            count: offers.length,
+            data: offers,
+        });
+    } catch (err) {
+        // Log error
+        console.error(err.message);
+        res.status(123).send({ message: err.message });
+    }
+});
+
+// Get method to get specific offer by id
+router.get("/:id", async (req, res) => {
+    try {
+        // Get id from request parameters
+        const { id } = req.params;
+
+        // get offer with given id
+        const offer = await Offer.findById(id);
+
+        // send offer to the client
+        return res.status(200).json(offer);
+    } catch (err) {
+        // Log error
+        console.error(err.stack);
+        res.status(123).send({ message: err.message });
+    }
+});
+
+export default router;
