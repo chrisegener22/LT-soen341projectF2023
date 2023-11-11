@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useAuth } from "../utils/AuthContext";
 
 export const OfferForm = () => {
     // storage for property and id
     const [property, setProperty] = useState({});
+    const [broker, setBroker] = useState({});
     const { id } = useParams();
+    const { user } = useAuth();
     // Method to get the property by id
     useEffect(() => {
         axios
@@ -16,7 +19,16 @@ export const OfferForm = () => {
             .catch((err) => {
                 console.log(err);
             });
-    }, [id]);
+
+        axios
+            .get(`http://localhost:8080/api/users/${user.id}`)
+            .then((res) => {
+                setBroker(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, [id, user]);
 
     return (
         <div className="flex min-h-fit min-w-screen items-center justify-center m-4">
@@ -40,47 +52,38 @@ export const OfferForm = () => {
                         <input
                             id="first-name"
                             type="text"
-                            required
+                            disabled
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
-                            placeholder="First Name"
+                            value={broker.firstName}
                         />
                     </div>
                     <div>
                         <input
                             id="last-name"
                             type="text"
-                            required
+                            disabled
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
-                            placeholder="Last Name"
+                            value={broker.lastName}
                         />
                     </div>
                     <div>
                         <input
                             id="license-number"
                             type="text"
-                            required
+                            disabled
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
-                            placeholder="License Number"
+                            value={broker.licenseNumber}
                         />
                     </div>
                     <div>
                         <input
                             id="Agency"
                             type="text"
-                            required
+                            disabled
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
-                            placeholder="Agency"
+                            value={broker.agency}
                         />
                     </div>
-                    {/* <div>
-                            <textarea
-                                id="message"
-                                type="text"
-                                rows={6}
-                                class="block p-2.5 w-full resize-none border border-gray-300 rounded-md placeholder-gray-500" 
-                                placeholder="Write custom Message"
-                            />
-                        </div>  */}
                     <label
                         className="block text-gray-700 text-sm font-bold mb-2"
                         htmlFor="date"

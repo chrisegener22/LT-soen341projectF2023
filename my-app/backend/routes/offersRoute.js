@@ -1,6 +1,6 @@
 // Imports
 import express from "express";
-import { Offer } from "../models/offerModel";
+import { Offer } from "../models/offerModel.js";
 
 // Making router to handle requests
 const router = express.Router();

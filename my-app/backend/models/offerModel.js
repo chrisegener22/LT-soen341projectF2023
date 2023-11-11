@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const offerSchema = mongoose.Schema({
     brokerID: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         required: true,
     },
     buyerName: {
@@ -14,11 +14,11 @@ const offerSchema = mongoose.Schema({
         required: true,
     },
     buyerEmail: {
-        Type: String,
+        type: String,
         required: true,
     },
     propertyID: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         required: true,
     },
     offeredPrice: {
