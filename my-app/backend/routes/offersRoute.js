@@ -68,4 +68,44 @@ router.get("/:id", async (req, res) => {
     }
 });
 
+// Get offer by broker id
+router.get("/brokerid/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const offers = await Offer.find({
+            brokerID: id,
+        });
+
+        // send to client
+        return res.status(200).json({
+            count: offers.length,
+            data: offers,
+        });
+    } catch (err) {
+        // Log error
+        console.error(err.message);
+        res.status(123).send({ message: err.message });
+    }
+});
+
+// Get offer by property id
+router.get("/propertyid/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const offers = await Offer.find({
+            propertyID: id,
+        });
+
+        // send to client
+        return res.status(200).json({
+            count: offers.length,
+            data: offers,
+        });
+    } catch (err) {
+        // Log error
+        console.error(err.message);
+        res.status(123).send({ message: err.message });
+    }
+});
+
 export default router;
