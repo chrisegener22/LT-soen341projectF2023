@@ -9,16 +9,7 @@ const router = express.Router();
 router.post("/", async (req, res) => {
     try {
         // Set newProperty as data from the request
-        const newOffer = {
-            brokerID: req.body.brokerID,
-            buyerName: req.body.buyerName,
-            buyerAddress: req.body.buyerAddress,
-            buyerEmail: req.body.buyerEmail,
-            propertyID: req.body.propertyID,
-            offeredPrice: req.body.offeredPrice,
-            dosDate: req.body.dosDate,
-            oopDate: req.body.oopDate,
-        };
+        const newOffer = req.body;
 
         // create new property
         const offer = await Offer.create(newOffer);

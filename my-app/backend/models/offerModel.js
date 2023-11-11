@@ -2,10 +2,30 @@ import mongoose from "mongoose";
 
 const offerSchema = mongoose.Schema({
     brokerID: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
     },
-    buyerName: {
+    buyerBrokerFirstName: {
+        type: String,
+        required: true,
+    },
+    buyerBrokerLastName: {
+        type: String,
+        required: true,
+    },
+    buyerBrokerLicenseNumber: {
+        type: Number,
+        required: true,
+    },
+    buyerBrokerAgency: {
+        type: String,
+        required: true,
+    },
+    buyerFirstName: {
+        type: String,
+        required: true,
+    },
+    buyerLastName: {
         type: String,
         required: true,
     },
@@ -18,7 +38,7 @@ const offerSchema = mongoose.Schema({
         required: true,
     },
     propertyID: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
     },
     offeredPrice: {
