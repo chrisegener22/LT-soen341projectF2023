@@ -1,7 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../utils/AuthContext";
 
 const Navbar = () => {
+    const { setAuth, auth, user, isLoading } = useAuth();
+    const navigate = useNavigate();
+
+    const logout = () => {
+        setAuth(false);
+        sessionStorage.removeItem("userData");
+        navigate("/");
+        alert("Successfully logged out");
+    };
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <nav className="bg-red-500 text-white flex justify-between items-stretch gap-10 px-4">
             {/* LOGO */}
@@ -12,22 +27,52 @@ const Navbar = () => {
             <ul className="p-0 m-0 text-lg font-semibold list-none flex gap-4">
                 <li className="hover:bg-red-900">
                     <Link
-                        to="/AddProperty"
+                        to="/Brokers"
                         className="h-full flex items-center p-2"
                     >
-                        Add Property
+                        Brokers
                     </Link>
                 </li>
-                <li className="hover:bg-red-900">
-                    <Link to="/Login" className="h-full flex items-center p-2">
-                        Login
-                    </Link>
-                </li>
-                <li className="hover:bg-red-900">
-                    <Link to="/Register" className="h-full flex items-center p-2">
-                        Register
-                    </Link>
-                </li>
+                {auth && user.isBroker ? (
+                    <li className="hover:bg-red-900">
+                        <Link
+                            to="/AddProperty"
+                            className="h-full flex items-center p-2"
+                        >
+                            Add Property
+                        </Link>
+                    </li>
+                ) : null}
+                {auth ? null : (
+                    <li className="hover:bg-red-900">
+                        <Link
+                            to="/Login"
+                            className="h-full flex items-center p-2"
+                        >
+                            Login
+                        </Link>
+                    </li>
+                )}
+                {auth ? null : (
+                    <li className="hover:bg-red-900">
+                        <Link
+                            to="/Register"
+                            className="h-full flex items-center p-2"
+                        >
+                            Register
+                        </Link>
+                    </li>
+                )}
+                {!auth ? null : (
+                    <li className="hover:bg-red-900">
+                        <button
+                            className="h-full flex items-center p-2"
+                            onClick={logout}
+                        >
+                            Logout
+                        </button>
+                    </li>
+                )}
             </ul>
         </nav>
     );

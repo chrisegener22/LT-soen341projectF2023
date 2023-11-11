@@ -2,17 +2,20 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+export const BrokerAdd = () => {
     // Fields that need to be set
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [isBroker, setIsBroker] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [isBroker] = useState(true);
+    const [isAdmin] = useState(false);
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [licenseNumber, setLicenseNumber] = useState("");
+    const [agency, setAgency] = useState("");
     const navigate = useNavigate();
 
-    const handleRegister = () => {
+    const handleSaveUser = () => {
         const data = {
             firstName,
             lastName,
@@ -20,6 +23,9 @@ const Register = () => {
             password,
             isBroker,
             isAdmin,
+            phoneNumber,
+            licenseNumber,
+            agency,
         };
 
         // Send data
@@ -40,7 +46,7 @@ const Register = () => {
             <div className="flex-col max-w-md w-full">
                 <div>
                     <h2 className="text-center text-3xl font-extrabold">
-                        Register
+                        Add Broker
                     </h2>
                 </div>
                 <div className="flex-col mt-8">
@@ -81,15 +87,40 @@ const Register = () => {
                         />
                     </div>
                     <div>
+                        <input
+                            type="text"
+                            required
+                            className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
+                            placeholder="Phone Number"
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            required
+                            className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
+                            placeholder="License Number"
+                            onChange={(e) => setLicenseNumber(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            required
+                            className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
+                            placeholder="Agency"
+                            onChange={(e) => setAgency(e.target.value)}
+                        />
+                    </div>
+                    <div>
                         <button
                             className="flex w-full mt-6 justify-center py-3 px-4 text-sm font-medium rounded-md text-white bg-blue-600"
                             onClick={() => {
-                                setIsBroker(false);
-                                setIsAdmin(false);
-                                handleRegister();
+                                handleSaveUser();
                             }}
                         >
-                            Register
+                            Add
                         </button>
                     </div>
                 </div>
@@ -97,5 +128,3 @@ const Register = () => {
         </div>
     );
 };
-
-export default Register;

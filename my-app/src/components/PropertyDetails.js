@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../utils/AuthContext";
 
 export const PropertyDetails = () => {
     // storage for property and id
     const [property, setProperty] = useState({});
     const { id } = useParams();
     const navigate = useNavigate();
+    const { auth, user } = useAuth();
 
     // Method to get the property by id
     useEffect(() => {
@@ -44,14 +46,15 @@ export const PropertyDetails = () => {
                         {property.postalCode}
                     </h1>
                     <h1 className="text-xl">Description: {property.desc}</h1>
-
-                    <button
-                        onClick={handleOfferForm}
-                        className="bg-blue-600 rounded-md py-2 mx-8 w-32 text-white text-sm font-medium mb-2 place-self-center"
-                        title="Submit Offer"
-                    >
-                        Make an Offer
-                    </button>
+                    {auth && user.isBroker ? (
+                        <button
+                            onClick={handleOfferForm}
+                            className="bg-blue-600 rounded-md py-2 mx-8 w-32 text-white text-sm font-medium mb-2 place-self-center"
+                            title="Submit Offer"
+                        >
+                            Make an Offer
+                        </button>
+                    ) : null}
                 </div>
             </div>
         </div>
