@@ -18,6 +18,7 @@ router.post("/", async (req, res) => {
             postalCode: req.body.postalCode,
             desc: req.body.desc,
             imageURL: req.body.imageURL,
+            visitDates: req.body.visitDates,
         };
 
         // create new property
@@ -85,7 +86,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Put method to update a property listing by id
-router.put("/:id", async (req, res) => {
+router.put("/:v", async (req, res) => {
     try {
         // Get id from request params
         const { id } = req.params;
@@ -108,6 +109,28 @@ router.put("/:id", async (req, res) => {
         res.status(123).send({ message: err.message });
     }
 });
+
+// Visit date availability
+router.get("/:id", async (req, res) => {
+    try {
+        // Get id from request parameters
+        const { id } = req.params;
+
+        // get property with given id
+        const visit = await Property.findById(id).visitDates;
+
+        // send properties to the client
+        return res.status(200).json(visit);
+    } catch (err) {
+        // Log error
+        console.error(err.stack);
+        res.status(123).send({ message: err.message });
+    }
+});
+
+
+
+
 
 // Delete method to delete a property by id
 router.delete("/:id", async (req, res) => {
