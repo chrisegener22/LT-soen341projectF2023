@@ -2,7 +2,6 @@
 import express from "express";
 import { User } from "../models/userModel.js";
 import jwt from "jsonwebtoken";
-import { userVerification } from "../middlewares/authMiddleware.js";
 
 // Making router to handle requests
 const router = express.Router();
@@ -49,9 +48,6 @@ router.post("/login", async (req, res) => {
             return res.status(401).send({ message: "Invalid password." });
         }
 
-        // make token
-        const token = jwt.sign({ id: user._id }, "123");
-        res.cookie("token", token);
         return res.json(user);
         //catches any errors thrown
     } catch (err) {
@@ -178,8 +174,5 @@ router.get("/:id", async (req, res) => {
         res.status(123).send({ message: err.message });
     }
 });
-
-// route to verify if user still exists
-router.post("/", userVerification);
 
 export default router;
