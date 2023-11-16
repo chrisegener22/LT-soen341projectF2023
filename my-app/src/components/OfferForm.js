@@ -72,15 +72,6 @@ export const OfferForm = () => {
                             placeholder="Agency"
                         />
                     </div>
-                    {/* <div>
-                            <textarea
-                                id="message"
-                                type="text"
-                                rows={6}
-                                class="block p-2.5 w-full resize-none border border-gray-300 rounded-md placeholder-gray-500" 
-                                placeholder="Write custom Message"
-                            />
-                        </div>  */}
                     <label
                         className="block text-gray-700 text-sm font-bold mb-2"
                         htmlFor="date"

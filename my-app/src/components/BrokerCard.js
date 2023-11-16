@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineEdit, AiOutlineFileSearch } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
-import { useAuth } from "../utils/AuthContext";
+import AuthContext from "../context/AuthProvider";
 
 export const BrokerCard = ({ brokers }) => {
-    const { auth, user } = useAuth();
-
+    const { auth } = useContext(AuthContext);
     return (
         <div className="grid grid-cols-3 items-center">
             {brokers.map((broker, index) => (
@@ -21,7 +20,7 @@ export const BrokerCard = ({ brokers }) => {
                         <h1>Email: {broker.email}</h1>
                     </div>
                     <div className="flex flex-row justify-between relative">
-                        {auth && user.isAdmin ? (
+                        {auth?.isAdmin ? (
                             <Link
                                 className="text-4xl"
                                 to={`/brokers/update/${broker._id}`}
@@ -29,10 +28,8 @@ export const BrokerCard = ({ brokers }) => {
                             >
                                 <AiOutlineEdit />
                             </Link>
-                        ) : (
-                            <div> </div>
-                        )}
-                        {auth && user.isAdmin ? (
+                        ) : null}
+                        {auth?.isAdmin ? (
                             <Link
                                 className="text-4xl"
                                 title="Delete"
@@ -40,9 +37,7 @@ export const BrokerCard = ({ brokers }) => {
                             >
                                 <BsTrash />
                             </Link>
-                        ) : (
-                            <div> </div>
-                        )}
+                        ) : null}
                         <Link
                             className="text-4xl"
                             title="Details"

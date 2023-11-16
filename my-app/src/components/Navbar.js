@@ -1,21 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../utils/AuthContext";
+import AuthContext from "../context/AuthProvider";
 
 const Navbar = () => {
-    const { setAuth, auth, user, isLoading } = useAuth();
+    const { auth, setAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const logout = () => {
-        setAuth(false);
-        sessionStorage.removeItem("userData");
+    const handleLogout = () => {
         navigate("/");
-        alert("Successfully logged out");
+        setAuth({});
     };
-
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
 
     return (
         <nav className="bg-red-500 text-white flex justify-between items-stretch gap-10 px-4">
@@ -25,15 +19,17 @@ const Navbar = () => {
             </Link>
             {/* Nav bar item that are going to be on the right side */}
             <ul className="p-0 m-0 text-lg font-semibold list-none flex gap-4">
-                <li className="hover:bg-red-900">
-                    <Link
-                        to="/Brokers"
-                        className="h-full flex items-center p-2"
-                    >
-                        Brokers
-                    </Link>
-                </li>
-                {auth && user.isBroker ? (
+                {auth?.loggedIn ? (
+                    <li className="hover:bg-red-900">
+                        <Link
+                            to="/Brokers"
+                            className="h-full flex items-center p-2"
+                        >
+                            Brokers
+                        </Link>
+                    </li>
+                ) : null}
+                {auth?.isBroker ? (
                     <li className="hover:bg-red-900">
                         <Link
                             to="/AddProperty"
@@ -43,7 +39,7 @@ const Navbar = () => {
                         </Link>
                     </li>
                 ) : null}
-                {auth ? null : (
+                {auth?.loggedIn ? null : (
                     <li className="hover:bg-red-900">
                         <Link
                             to="/Login"
@@ -53,7 +49,7 @@ const Navbar = () => {
                         </Link>
                     </li>
                 )}
-                {auth ? null : (
+                {auth?.loggedIn ? null : (
                     <li className="hover:bg-red-900">
                         <Link
                             to="/Register"
@@ -63,11 +59,11 @@ const Navbar = () => {
                         </Link>
                     </li>
                 )}
-                {!auth ? null : (
+                {!auth?.loggedIn ? null : (
                     <li className="hover:bg-red-900">
                         <button
                             className="h-full flex items-center p-2"
-                            onClick={logout}
+                            onClick={handleLogout}
                         >
                             Logout
                         </button>

@@ -48,19 +48,7 @@ router.post("/login", async (req, res) => {
             return res.status(401).send({ message: "Invalid password." });
         }
 
-        // Give token to user for authentication
-        const token = jwt.sign(
-            {
-                id: user._id,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                email: user.email,
-                isBroker: user.isBroker,
-                isAdmin: user.isAdmin,
-            },
-            "123"
-        );
-        return res.json({ status: "good", token: token });
+        return res.json(user);
         //catches any errors thrown
     } catch (err) {
         console.error(err.stack);
