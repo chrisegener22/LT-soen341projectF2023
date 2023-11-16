@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineFileSearch, AiOutlineEdit } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
+import AuthContext from "../context/AuthProvider";
 
 export const PropertyCard = ({ properties }) => {
+    const { auth } = useContext(AuthContext);
     return (
         <div className="grid grid-cols-3 items-center">
             {properties.map((property, index) => (
@@ -34,7 +36,7 @@ export const PropertyCard = ({ properties }) => {
                         >
                             <AiOutlineFileSearch />
                         </Link>
-                        {1 == 1 ? (
+                        {auth?.isBroker ? (
                             <Link
                                 className="text-4xl"
                                 to={`/properties/update/${property._id}`}
@@ -43,7 +45,7 @@ export const PropertyCard = ({ properties }) => {
                                 <AiOutlineEdit />
                             </Link>
                         ) : null}
-                        {1 == 1 ? (
+                        {auth?.isBroker ? (
                             <Link
                                 className="text-4xl"
                                 title="Delete"

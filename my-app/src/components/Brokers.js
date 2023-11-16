@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BrokerCard } from "./BrokerCard";
 import axios from "axios";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import AuthContext from "../context/AuthProvider";
 
 export const Brokers = () => {
+    const { auth } = useContext(AuthContext);
     // Store search results in result list
     const [resultList, setResultList] = useState([]);
     //Store search query
@@ -52,7 +54,7 @@ export const Brokers = () => {
                     className="text-black rounded-lg w-1/2 h-16 outline outline-2 outline-red-500 px-3 drop-shadow-xl"
                     onChange={(e) => setSearch(e.target.value)}
                 />
-                {1 == 1 ? (
+                {auth?.isAdmin ? (
                     <Link
                         to={`/brokers/add`}
                         className="text-6xl text-green-700 ml-5"

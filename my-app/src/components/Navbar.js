@@ -3,8 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthProvider";
 
 const Navbar = () => {
-    const { auth } = useContext(AuthContext);
+    const { auth, setAuth } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    const handleLogout = () => {
+        navigate("/");
+        setAuth({});
+    };
 
     return (
         <nav className="bg-red-500 text-white flex justify-between items-stretch gap-10 px-4">
@@ -56,7 +61,10 @@ const Navbar = () => {
                 )}
                 {!auth?.loggedIn ? null : (
                     <li className="hover:bg-red-900">
-                        <button className="h-full flex items-center p-2">
+                        <button
+                            className="h-full flex items-center p-2"
+                            onClick={handleLogout}
+                        >
                             Logout
                         </button>
                     </li>
