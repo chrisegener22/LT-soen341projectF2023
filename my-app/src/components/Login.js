@@ -37,10 +37,7 @@ const Login = () => {
                     </div>
 
                     <div>
-                        <button
-                            className="flex w-full mt-6 justify-center py-3 px-4 text-sm font-medium rounded-md text-white bg-blue-600"
-                            onClick={handleLogin}
-                        >
+                        <button className="flex w-full mt-6 justify-center py-3 px-4 text-sm font-medium rounded-md text-white bg-blue-600">
                             Login
                         </button>
                     </div>

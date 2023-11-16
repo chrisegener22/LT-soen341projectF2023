@@ -52,10 +52,7 @@ const Navbar = () => {
                 )}
                 {1 == 1 ? null : (
                     <li className="hover:bg-red-900">
-                        <button
-                            className="h-full flex items-center p-2"
-                            onClick={logout}
-                        >
+                        <button className="h-full flex items-center p-2">
                             Logout
                         </button>
                     </li>
