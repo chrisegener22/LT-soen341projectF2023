@@ -1,31 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../utils/AuthContext";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const { setAuth } = useAuth();
-
-    const handleLogin = async () => {
-        const data = { email, password };
-        try {
-            const response = await axios.post(
-                "http://localhost:8080/api/users/login",
-                data
-            );
-            const userData = atob(response.data.token.split(".")[1]);
-            sessionStorage.setItem("userData", userData);
-            setAuth(true);
-            alert("Logged in successfully");
-            navigate("/");
-        } catch (err) {
-            alert("Failed to login");
-            console.log(err);
-        }
-    };
 
     return (
         <div className="flex min-h-screen min-w-screen items-center justify-center">

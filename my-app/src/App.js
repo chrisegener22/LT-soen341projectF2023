@@ -45,6 +45,7 @@ function App() {
                     path="/properties/offers/:id"
                     element={<OfferManagement />}
                 />
+                <Route
                     path="/brokers/details/:id"
                     element={<BrokerDetails />}
                 />
