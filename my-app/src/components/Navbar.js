@@ -30,7 +30,7 @@ const Navbar = () => {
                         </Link>
                     </li>
                 ) : null}
-                {1 == 1 ? null : (
+                {1 != 1 ? null : (
                     <li className="hover:bg-red-900">
                         <Link
                             to="/Login"
@@ -40,7 +40,7 @@ const Navbar = () => {
                         </Link>
                     </li>
                 )}
-                {1 == 1 ? null : (
+                {1 != 1 ? null : (
                     <li className="hover:bg-red-900">
                         <Link
                             to="/Register"
@@ -50,12 +50,9 @@ const Navbar = () => {
                         </Link>
                     </li>
                 )}
-                {1 == 1 ? null : (
+                {1 != 1 ? null : (
                     <li className="hover:bg-red-900">
-                        <button
-                            className="h-full flex items-center p-2"
-                            onClick={logout}
-                        >
+                        <button className="h-full flex items-center p-2">
                             Logout
                         </button>
                     </li>
