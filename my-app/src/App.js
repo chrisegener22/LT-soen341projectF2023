@@ -8,6 +8,7 @@ import { OfferForm } from "./components/OfferForm";
 import { PropertyDetails } from "./components/PropertyDetails";
 import { PropertyUpdate } from "./components/PropertyUpdate";
 import { PropertyDelete } from "./components/PropertyDelete";
+import OfferManagement from "./components/OfferManagement";
 import { BrokerDetails } from "./components/BrokerDetails";
 import { Brokers } from "./components/Brokers";
 import { BrokerDelete } from "./components/BrokerDelete";
@@ -39,6 +40,10 @@ function App() {
                 <Route
                     path="/properties/delete/:id"
                     element={<PropertyDelete />}
+                />
+                <Route
+                    path="/properties/offers/:id"
+                    element={<OfferManagement />}
                 />
                 <Route
                     path="/brokers/details/:id"
