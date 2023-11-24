@@ -1,16 +1,15 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAuth } from "../utils/AuthContext";
-import cycle from "cycle";
+import AuthContext from "../context/AuthProvider";
 
 export const OfferForm = () => {
     // storage for property and id
     const [property, setProperty] = useState({});
     const { id } = useParams();
-    const { user } = useAuth();
+    const { auth } = useContext(AuthContext);
     const navigate = useNavigate();
-    const [brokerID, setBrokerID] = useState(user.id);
+    const brokerID = auth?.id;
     const [buyerBrokerFirstName, setBuyerBrokerFirstName] = useState("");
     const [buyerBrokerLastName, setBuyerBrokerLastName] = useState("");
     const [buyerBrokerLicenseNumber, setBuyerBrokerLicenseNumber] =
@@ -20,7 +19,7 @@ export const OfferForm = () => {
     const [buyerLastName, setBuyerLastName] = useState("");
     const [buyerAddress, setBuyerAddress] = useState("");
     const [buyerEmail, setBuyerEmail] = useState("");
-    const [propertyID, setPropertyID] = useState(id);
+    const propertyID = id;
     const [offeredPrice, setOfferedPrice] = useState("");
     const [dosDate, setDosDate] = useState("");
     const [oopDate, setOopDate] = useState("");
@@ -37,7 +36,7 @@ export const OfferForm = () => {
     }, [id]);
 
     const handleSubmit = () => {
-        const data = cycle.decycle({
+        const data = {
             brokerID,
             buyerBrokerFirstName,
             buyerBrokerLastName,
@@ -51,8 +50,8 @@ export const OfferForm = () => {
             offeredPrice,
             dosDate,
             oopDate,
-        });
-
+        };
+        console.log(data);
         // Send data
         axios
             .post("http://localhost:8080/api/offers/", data)
@@ -91,7 +90,9 @@ export const OfferForm = () => {
                             required
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
                             placeholder="First Name"
-                            onChange={(e) => setBuyerBrokerFirstName(e)}
+                            onChange={(e) =>
+                                setBuyerBrokerFirstName(e.target.value)
+                            }
                         />
                     </div>
                     <div>
@@ -101,7 +102,9 @@ export const OfferForm = () => {
                             required
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
                             placeholder="Last Name"
-                            onChange={(e) => setBuyerBrokerLastName(e)}
+                            onChange={(e) =>
+                                setBuyerBrokerLastName(e.target.value)
+                            }
                         />
                     </div>
                     <div>
@@ -111,7 +114,9 @@ export const OfferForm = () => {
                             required
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
                             placeholder="License Number"
-                            onChange={(e) => setBuyerBrokerLicenseNumber(e)}
+                            onChange={(e) =>
+                                setBuyerBrokerLicenseNumber(e.target.value)
+                            }
                         />
                     </div>
                     <div>
@@ -121,7 +126,9 @@ export const OfferForm = () => {
                             required
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
                             placeholder="Agency"
-                            onChange={(e) => setBuyerBrokerAgency(e)}
+                            onChange={(e) =>
+                                setBuyerBrokerAgency(e.target.value)
+                            }
                         />
                     </div>
                     <label
@@ -137,7 +144,7 @@ export const OfferForm = () => {
                             required
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
                             placeholder="First Name"
-                            onChange={(e) => setBuyerFirstName(e)}
+                            onChange={(e) => setBuyerFirstName(e.target.value)}
                         />
                     </div>
                     <div>
@@ -147,7 +154,7 @@ export const OfferForm = () => {
                             required
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
                             placeholder="Last Name"
-                            onChange={(e) => setBuyerLastName(e)}
+                            onChange={(e) => setBuyerLastName(e.target.value)}
                         />
                     </div>
                     <div>
@@ -157,7 +164,7 @@ export const OfferForm = () => {
                             required
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
                             placeholder="you@example.com"
-                            onChange={(e) => setBuyerEmail(e)}
+                            onChange={(e) => setBuyerEmail(e.target.value)}
                         />
                     </div>
                     <div>
@@ -167,7 +174,7 @@ export const OfferForm = () => {
                             required
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
                             placeholder="Address"
-                            onChange={(e) => setBuyerAddress(e)}
+                            onChange={(e) => setBuyerAddress(e.target.value)}
                         />
                     </div>
                     <div>
@@ -209,7 +216,7 @@ export const OfferForm = () => {
                             step="any"
                             required
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
-                            onChange={(e) => setOfferedPrice(e)}
+                            onChange={(e) => setOfferedPrice(e.target.value)}
                         ></input>
                     </div>
                     <div>
@@ -224,7 +231,7 @@ export const OfferForm = () => {
                             type="date"
                             required
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
-                            onChange={(e) => setDosDate(e)}
+                            onChange={(e) => setDosDate(e.target.value)}
                         />
                     </div>
                     <div>
@@ -239,7 +246,7 @@ export const OfferForm = () => {
                             type="date"
                             required
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
-                            onChange={(e) => setOopDate(e)}
+                            onChange={(e) => setOopDate(e.target.value)}
                         />
                     </div>
                     <button
