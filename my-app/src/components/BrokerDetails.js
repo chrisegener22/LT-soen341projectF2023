@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import AuthContext from "../context/AuthProvider";
 
 export const BrokerDetails = () => {
     // storage for broker information
     const [broker, setBroker] = useState({});
     const { id } = useParams();
+    const { auth } = useContext(AuthContext);
     // Method to get the broker by id
     useEffect(() => {
         axios
@@ -32,14 +34,16 @@ export const BrokerDetails = () => {
                     </h1>
                     <h1 className="text-lg ">Agency: {broker.agency}</h1>
 
-                    <div>
-                        <button
-                            className="bg-slate-400 rounded-md py-2 w-32 text-white text-sm font-medium my-3"
-                            title="Contact Broker"
-                        >
-                            Contact
-                        </button>
-                    </div>
+                    {auth?.isAdmin ? null : (
+                        <div>
+                            <button
+                                className="bg-slate-400 rounded-md py-2 w-32 text-white text-sm font-medium my-3"
+                                title="Contact Broker"
+                            >
+                                Contact
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
