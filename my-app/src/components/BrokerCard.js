@@ -13,7 +13,7 @@ export const BrokerCard = ({ brokers }) => {
                     key={broker._id}
                     className="border-2 border-black rounded-xl relative p-4 m-4"
                 >
-                    <h1 className="text-lg font-bold text-green-800">
+                    <h1 className="text-lg font-bold">
                         {broker.firstName} {broker.lastName}
                     </h1>
                     <div className="text-lg">

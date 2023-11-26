@@ -25,7 +25,7 @@ export const PropertyDetails = () => {
 
     //Method to navigate to the offer form
     const handleOfferForm = () => {
-        navigate(`/properties/details/${id}/offer-form`);
+        navigate(`/properties/details/offer_form/${id}`);
     };
 
     return (
