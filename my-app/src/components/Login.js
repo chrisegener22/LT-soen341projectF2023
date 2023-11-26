@@ -22,12 +22,13 @@ const Login = () => {
             );
             const isAdmin = response?.data?.isAdmin;
             const isBroker = response?.data?.isBroker;
+            const id = response?.data?._id;
             const loggedIn = true;
-            setAuth({ isAdmin, isBroker, loggedIn });
+            setAuth({ isAdmin, isBroker, loggedIn, id });
             setSuccess(true);
             setTimeout(() => {
                 navigate("/");
-            }, 2000);
+            }, 600);
         } catch (err) {
             console.log(err);
         }

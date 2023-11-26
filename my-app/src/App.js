@@ -4,17 +4,18 @@ import Home from "./components/Home";
 import { AddProperty } from "./components/AddProperty";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import OfferForm from "./components/OfferForm";
+import { OfferForm } from "./components/OfferForm";
 import { PropertyDetails } from "./components/PropertyDetails";
 import { PropertyUpdate } from "./components/PropertyUpdate";
 import { PropertyDelete } from "./components/PropertyDelete";
-import OfferManagement from "./components/OfferManagement";
 import { BrokerDetails } from "./components/BrokerDetails";
 import { Brokers } from "./components/Brokers";
 import { BrokerDelete } from "./components/BrokerDelete";
 import { BrokerUpdate } from "./components/BrokerUpdate";
 import { BrokerAdd } from "./components/BrokerAdd";
 import MortgageCalculatorPage from "./components/MortgageCalculator";
+import { Offers } from "./components/Offers";
+import { OfferDetails } from "./components/OfferDetails";
 
 function App() {
     return (
@@ -26,8 +27,9 @@ function App() {
                 <Route path="/Register" element={<Register />} />
                 <Route path="/Login" element={<Login />} />
                 <Route path="/Brokers" element={<Brokers />} />
+                <Route path="/Offers" element={<Offers />} />
                 <Route
-                    path="/properties/details/:id/offer-form"
+                    path="/properties/details/offer_form/:id"
                     element={<OfferForm />}
                 />
                 <Route
@@ -43,10 +45,6 @@ function App() {
                     element={<PropertyDelete />}
                 />
                 <Route
-                    path="/properties/offers/:id"
-                    element={<OfferManagement />}
-                />
-                <Route
                     path="/brokers/details/:id"
                     element={<BrokerDetails />}
                 />
@@ -54,6 +52,7 @@ function App() {
                 <Route path="/brokers/update/:id" element={<BrokerUpdate />} />
                 <Route path="/brokers/add" element={<BrokerAdd />} />
                 <Route path="/mortgage-calculator" element={<MortgageCalculatorPage />} />
+                <Route path="/offers/details/:id" element={<OfferDetails />} />
             </Routes>
         </div>
     );
