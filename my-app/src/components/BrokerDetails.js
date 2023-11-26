@@ -34,7 +34,7 @@ export const BrokerDetails = () => {
                     </h1>
                     <h1 className="text-lg ">Agency: {broker.agency}</h1>
 
-                    {auth?.isAdmin ? null : (
+                    {auth?.isAdmin || auth?.isBroker ? null : (
                         <div>
                             <button
                                 className="bg-slate-400 rounded-md py-2 w-32 text-white text-sm font-medium my-3"
