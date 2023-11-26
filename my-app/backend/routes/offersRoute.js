@@ -48,7 +48,7 @@ router.get("/:id", async (req, res) => {
         const { id } = req.params;
 
         // get offer with given id
-        const offer = await Offer.findById(id);
+        const offer = await Offer.findById(id).populate("propertyID");
 
         // send offer to the client
         return res.status(200).json(offer);

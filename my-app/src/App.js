@@ -8,13 +8,13 @@ import { OfferForm } from "./components/OfferForm";
 import { PropertyDetails } from "./components/PropertyDetails";
 import { PropertyUpdate } from "./components/PropertyUpdate";
 import { PropertyDelete } from "./components/PropertyDelete";
-import OfferManagement from "./components/OfferManagement";
 import { BrokerDetails } from "./components/BrokerDetails";
 import { Brokers } from "./components/Brokers";
 import { BrokerDelete } from "./components/BrokerDelete";
 import { BrokerUpdate } from "./components/BrokerUpdate";
 import { BrokerAdd } from "./components/BrokerAdd";
 import { Offers } from "./components/Offers";
+import { OfferDetails } from "./components/OfferDetails";
 
 function App() {
     return (
@@ -50,6 +50,7 @@ function App() {
                 <Route path="/brokers/delete/:id" element={<BrokerDelete />} />
                 <Route path="/brokers/update/:id" element={<BrokerUpdate />} />
                 <Route path="/brokers/add" element={<BrokerAdd />} />
+                <Route path="/offers/details/:id" element={<OfferDetails />} />
             </Routes>
         </div>
     );
