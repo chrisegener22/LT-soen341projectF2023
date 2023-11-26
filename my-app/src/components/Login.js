@@ -28,7 +28,7 @@ const Login = () => {
             setSuccess(true);
             setTimeout(() => {
                 navigate("/");
-            }, 2000);
+            }, 600);
         } catch (err) {
             console.log(err);
         }

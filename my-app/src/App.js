@@ -14,6 +14,7 @@ import { Brokers } from "./components/Brokers";
 import { BrokerDelete } from "./components/BrokerDelete";
 import { BrokerUpdate } from "./components/BrokerUpdate";
 import { BrokerAdd } from "./components/BrokerAdd";
+import { Offers } from "./components/Offers";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/Register" element={<Register />} />
                 <Route path="/Login" element={<Login />} />
                 <Route path="/Brokers" element={<Brokers />} />
+                <Route path="/Offers" element={<Offers />} />
                 <Route
                     path="/properties/details/offer_form/:id"
                     element={<OfferForm />}
@@ -40,10 +42,6 @@ function App() {
                 <Route
                     path="/properties/delete/:id"
                     element={<PropertyDelete />}
-                />
-                <Route
-                    path="/properties/offers/:id"
-                    element={<OfferManagement />}
                 />
                 <Route
                     path="/brokers/details/:id"

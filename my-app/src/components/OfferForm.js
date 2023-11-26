@@ -51,7 +51,7 @@ export const OfferForm = () => {
             dosDate,
             oopDate,
         };
-        console.log(data);
+
         // Send data
         axios
             .post("http://localhost:8080/api/offers/", data)
@@ -76,7 +76,7 @@ export const OfferForm = () => {
                         Buy Offer
                     </label>
                 </div>
-                <form className="flex-col mt-8" onSubmit={handleSubmit}>
+                <div className="flex-col mt-8">
                     <label
                         className="block text-gray-700 text-sm font-bold mb-2"
                         htmlFor="date"
@@ -251,11 +251,11 @@ export const OfferForm = () => {
                     </div>
                     <button
                         className="flex w-full mt-6 justify-center py-3 px-4 text-sm font-medium rounded-md text-white bg-blue-600"
-                        type="submit"
+                        onClick={handleSubmit}
                     >
                         Submit
                     </button>
-                </form>
+                </div>
             </div>
         </div>
     );
