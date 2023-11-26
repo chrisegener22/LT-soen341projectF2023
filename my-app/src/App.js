@@ -13,6 +13,7 @@ import { Brokers } from "./components/Brokers";
 import { BrokerDelete } from "./components/BrokerDelete";
 import { BrokerUpdate } from "./components/BrokerUpdate";
 import { BrokerAdd } from "./components/BrokerAdd";
+import MortgageCalculatorPage from "./components/MortgageCalculator";
 import { Offers } from "./components/Offers";
 import { OfferDetails } from "./components/OfferDetails";
 
@@ -50,6 +51,7 @@ function App() {
                 <Route path="/brokers/delete/:id" element={<BrokerDelete />} />
                 <Route path="/brokers/update/:id" element={<BrokerUpdate />} />
                 <Route path="/brokers/add" element={<BrokerAdd />} />
+                <Route path="/mortgage-calculator" element={<MortgageCalculatorPage />} />
                 <Route path="/offers/details/:id" element={<OfferDetails />} />
             </Routes>
         </div>
