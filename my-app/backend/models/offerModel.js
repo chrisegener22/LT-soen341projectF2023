@@ -40,6 +40,7 @@ const offerSchema = mongoose.Schema({
     propertyID: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
+        ref: "Property",
     },
     offeredPrice: {
         type: Number,

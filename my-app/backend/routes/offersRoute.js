@@ -65,7 +65,7 @@ router.get("/brokerid/:id", async (req, res) => {
         const { id } = req.params;
         const offers = await Offer.find({
             brokerID: id,
-        });
+        }).populate("propertyID");
 
         // send to client
         return res.status(200).json({
