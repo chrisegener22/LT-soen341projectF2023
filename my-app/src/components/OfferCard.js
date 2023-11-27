@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineFileSearch } from "react-icons/ai";
 
 export const OfferCard = ({ offers }) => {
     return (
@@ -26,13 +25,17 @@ export const OfferCard = ({ offers }) => {
                         <br />
                         Offered Price: ${offer.offeredPrice}
                     </h1>
-                    <Link
-                        className="text-4xl"
-                        title="Details"
-                        to={`/offers/details/${offer._id}`}
-                    >
-                        <AiOutlineFileSearch />
+                    <Link title="Details" to={`/offers/details/${offer._id}`}>
+                        <button className="bg-gray-600 rounded-lg p-2 mx-3 text-white">
+                            Details
+                        </button>
                     </Link>
+                    <button className="bg-green-400 rounded-lg p-2 mx-3">
+                        Accept
+                    </button>
+                    <button className="bg-red-400 rounded-lg p-2 mx-3">
+                        Reject
+                    </button>
                 </div>
             ))}
         </div>
