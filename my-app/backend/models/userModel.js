@@ -39,6 +39,9 @@ const userSchema = mongoose.Schema({
     agency: {
         type: String,
     },
+    visitDates: {
+        type: Array,
+    }
 });
 
 userSchema.index({

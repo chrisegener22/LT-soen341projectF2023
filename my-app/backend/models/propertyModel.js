@@ -39,6 +39,11 @@ const propertySchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    visitDates: {
+        //dates available for visits
+        type: Array,
+        required: true,
+    }
 });
 
 propertySchema.index({
