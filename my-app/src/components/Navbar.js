@@ -19,7 +19,7 @@ const Navbar = () => {
             </Link>
             {/* Nav bar item that are going to be on the right side */}
             <ul className="p-0 m-0 text-lg font-semibold list-none flex gap-4">
-                {auth?.loggedIn && !auth?.isBroker && !auth?.isAdmin ? null : (
+                {auth?.loggedIn && !auth?.isBroker && !auth?.isAdmin ? (
                     <li className="hover:bg-red-900">
                         <Link
                             to="/mortgage-calculator"
@@ -28,7 +28,7 @@ const Navbar = () => {
                             Mortgate Calculator
                         </Link>
                     </li>
-                )}
+                ) : null}
                 {auth?.isBroker ? (
                     <li className="hover:bg-red-900">
                         <Link
