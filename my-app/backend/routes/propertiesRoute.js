@@ -18,7 +18,6 @@ router.post("/", async (req, res) => {
             postalCode: req.body.postalCode,
             desc: req.body.desc,
             imageURL: req.body.imageURL,
-            visitDates: req.body.visitDates,
         };
 
         // create new property
@@ -127,10 +126,6 @@ router.get("/:id", async (req, res) => {
         res.status(123).send({ message: err.message });
     }
 });
-
-
-
-
 
 // Delete method to delete a property by id
 router.delete("/:id", async (req, res) => {
