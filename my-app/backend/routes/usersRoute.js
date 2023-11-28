@@ -55,7 +55,7 @@ router.post("/login", async (req, res) => {
     }
 });
 
-// Save a property
+// Save a property visit date
 router.post("/save-property", async (req, res) => {
     try {
         //save property id and tour with the user ID on the database
@@ -70,6 +70,59 @@ router.post("/save-property", async (req, res) => {
     } catch (err) {
         console.error(err.stack);
         res.status(123).send({ message: "Failed to save property." });
+    }
+});
+
+// Delete a property visit date
+
+router.post("/delete-property", async (req, res) => {
+    try {
+        const { userId, property_ID, tour_Date } = req.body;
+
+        // Find and delete the property based on the provided criteria
+        const deletedProperty = await Property.findOneAndDelete({
+            userId,
+            property_ID,
+            tour_Date,
+        });
+
+        // Check if the property was found and deleted
+        if (deletedProperty) {
+            return res.send({ message: "Property deleted successfully." });
+        } else {
+            return res.status(404).send({ message: "Property not found." });
+        }
+    } catch (err) {
+        console.error(err.stack);
+        res.status(500).send({ message: "Failed to delete property." });
+    }
+});
+
+// Change property visit date
+
+router.post("/update-visit-date", async (req, res) => {
+    try {
+          const { userId, property_ID, newVisitDate } = req.body;
+
+        // Find and update the property's visit date based on the provided criteria
+        const updatedProperty = await Property.findOneAndUpdate(
+            {
+                userId,
+                property_ID,
+            },
+            { $set: { tour_Date: newVisitDate } },
+            { new: true }
+        );
+
+        // Check if the property was found and updated
+        if (updatedProperty) {
+            return res.send({ message: "Visit date updated successfully.", updatedProperty });
+        } else {
+            return res.status(404).send({ message: "Property not found." });
+        }
+    } catch (err) {
+        console.error(err.stack);
+        res.status(500).send({ message: "Failed to update visit date." });
     }
 });
 
