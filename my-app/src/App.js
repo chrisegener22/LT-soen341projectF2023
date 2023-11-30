@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import { AddProperty } from "./components/AddProperty";
+import { AddProperty } from "./components/PropertyAdd";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import { OfferForm } from "./components/OfferForm";
