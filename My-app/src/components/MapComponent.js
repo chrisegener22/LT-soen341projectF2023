@@ -1,41 +1,35 @@
-import React, { useEffect, useState } from 'react.js';
+import React from "react";
+import { useJsApiLoader, GoogleMap } from "@react-google-maps/api";
 
-const MapComponent = () => {
-  const [properties, setProperties] = useState([]);
-
-  useEffect(() => {
-    const fetchProperties = async () => {
-      try {
-        const response = await fetch('http://localhost:3001/api/map/properties');
-        const data = await response.json();
-        setProperties(data);
-      } catch (error) {
-        console.error('Error fetching properties:', error);
-      }
-    };
-
-    fetchProperties();
-  }, []);
-
-  useEffect(() => {
-    // Code to initialize and display properties on the map
-    const map = new google.maps.Map(document.getElementById('map'), {
-      center: { lat: 37.7749, lng: -122.4194 },
-      zoom: 12,
+export const MapComponent = () => {
+    const { isLoaded } = useJsApiLoader({
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
     });
 
-    properties.forEach((property) => {
-      new google.maps.Marker({
-        position: { lat: property.lat, lng: property.lon },
-        map,
-        title: property.address,
-      });
-    });
-  }, [properties]);
-
-  return (
-    <div id="map" style={{ height: '400px' }}></div>
-  );
+    if (isLoaded) {
+        return (
+            <div className="flex justify-center">
+                <GoogleMap
+                    center={{ lat: 45.5037257, lng: -73.6714299 }}
+                    zoom={12}
+                    mapContainerStyle={{ width: "90%", height: "100vh" }}
+                    options={{
+                        styles: [
+                            {
+                                elementType: "labels",
+                                featureType: "poi",
+                                stylers: [{ visibility: "off" }],
+                            },
+                        ],
+                    }}
+                ></GoogleMap>
+            </div>
+        );
+    } else {
+        return (
+            <div>
+                <h1 className="text-3xl font-bold">Loading...</h1>
+            </div>
+        );
+    }
 };
-
-export default MapComponent;

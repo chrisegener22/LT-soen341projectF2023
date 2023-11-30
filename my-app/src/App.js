@@ -16,6 +16,7 @@ import { BrokerAdd } from "./components/BrokerAdd";
 import MortgageCalculatorPage from "./components/MortgageCalculator";
 import { Offers } from "./components/Offers";
 import { OfferDetails } from "./components/OfferDetails";
+import { MapComponent } from "./components/MapComponent";
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/Login" element={<Login />} />
                 <Route path="/Brokers" element={<Brokers />} />
                 <Route path="/Offers" element={<Offers />} />
+                <Route path="/Map" element={<MapComponent />} />
                 <Route
                     path="/properties/details/offer_form/:id"
                     element={<OfferForm />}
@@ -51,7 +53,10 @@ function App() {
                 <Route path="/brokers/delete/:id" element={<BrokerDelete />} />
                 <Route path="/brokers/update/:id" element={<BrokerUpdate />} />
                 <Route path="/brokers/add" element={<BrokerAdd />} />
-                <Route path="/mortgage-calculator" element={<MortgageCalculatorPage />} />
+                <Route
+                    path="/mortgage-calculator"
+                    element={<MortgageCalculatorPage />}
+                />
                 <Route path="/offers/details/:id" element={<OfferDetails />} />
             </Routes>
         </div>
