@@ -4,6 +4,7 @@ import { useJsApiLoader, GoogleMap } from "@react-google-maps/api";
 export const MapComponent = () => {
     const { isLoaded } = useJsApiLoader({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+        libraries: ["places"],
     });
 
     if (isLoaded) {

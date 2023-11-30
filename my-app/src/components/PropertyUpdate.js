@@ -2,17 +2,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { Autocomplete, useJsApiLoader } from "@react-google-maps/api";
 
 export const PropertyUpdate = () => {
     // Fields that need to be set
     const [price, setPrice] = useState("");
-    const [houseNumber, setHouseNumber] = useState("");
-    const [street, setStreet] = useState("");
-    const [city, setCity] = useState("");
-    const [province, setProvince] = useState("");
-    const [postalCode, setPostalCode] = useState("");
+    const [address, setAddress] = useState("");
     const [desc, setDesc] = useState("");
     const [imageURL, setImageURL] = useState("");
+    const { isLoaded } = useJsApiLoader({
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+        libraries: ["places"],
+    });
+
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -22,11 +24,7 @@ export const PropertyUpdate = () => {
             .get(`http://localhost:8080/api/properties/${id}`)
             .then((res) => {
                 setPrice(res.data.price);
-                setHouseNumber(res.data.houseNumber);
-                setStreet(res.data.street);
-                setCity(res.data.city);
-                setProvince(res.data.province);
-                setPostalCode(res.data.postalCode);
+                setAddress(res.data.address);
                 setDesc(res.data.desc);
                 setImageURL(res.data.imageURL);
             })
@@ -38,11 +36,7 @@ export const PropertyUpdate = () => {
         // set data to send
         const data = {
             price,
-            houseNumber,
-            street,
-            city,
-            province,
-            postalCode,
+            address,
             desc,
             imageURL,
         };
@@ -59,6 +53,14 @@ export const PropertyUpdate = () => {
                 console.log(err);
             });
     };
+
+    if (!isLoaded) {
+        return (
+            <div>
+                <h1 className="text-3xl font-bold">Loading...</h1>
+            </div>
+        );
+    }
 
     return (
         <div>
@@ -78,49 +80,16 @@ export const PropertyUpdate = () => {
                     />
                 </div>
                 <div className="my-4">
-                    <label className="text-xl mr-4">House Number</label>
-                    <input
-                        type="text"
-                        className="w-full border-2 px-1"
-                        value={houseNumber}
-                        onChange={(e) => setHouseNumber(e.target.value)}
-                    />
-                </div>
-                <div className="my-4">
-                    <label className="text-xl mr-4">Street</label>
-                    <input
-                        type="text"
-                        className="w-full border-2 px-1"
-                        value={street}
-                        onChange={(e) => setStreet(e.target.value)}
-                    />
-                </div>
-                <div className="my-4">
-                    <label className="text-xl mr-4">City</label>
-                    <input
-                        type="text"
-                        className="w-full border-2 px-1"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                    />
-                </div>
-                <div className="my-4">
-                    <label className="text-xl mr-4">Province</label>
-                    <input
-                        type="text"
-                        className="w-full border-2 px-1"
-                        value={province}
-                        onChange={(e) => setProvince(e.target.value)}
-                    />
-                </div>
-                <div className="my-4">
-                    <label className="text-xl mr-4">Postal Code</label>
-                    <input
-                        type="text"
-                        className="w-full border-2 px-1"
-                        value={postalCode}
-                        onChange={(e) => setPostalCode(e.target.value)}
-                    />
+                    <label className="text-xl mr-4">Address</label>
+                    <Autocomplete>
+                        <input
+                            type="text"
+                            className="w-full border-2 px-1"
+                            value={address}
+                            onInput={(e) => setAddress(e.target.value)}
+                            onBlur={(e) => setAddress(e.target.value)}
+                        />
+                    </Autocomplete>
                 </div>
                 <div className="my-4">
                     <label className="text-xl mr-4">Description</label>

@@ -9,16 +9,7 @@ const router = express.Router();
 router.post("/", async (req, res) => {
     try {
         // Set newProperty as data from the request
-        const newProperty = {
-            price: req.body.price,
-            houseNumber: req.body.houseNumber,
-            street: req.body.street,
-            city: req.body.city,
-            province: req.body.province,
-            postalCode: req.body.postalCode,
-            desc: req.body.desc,
-            imageURL: req.body.imageURL,
-        };
+        const newProperty = req.body;
 
         // create new property
         const property = await Property.create(newProperty);
@@ -102,24 +93,6 @@ router.put("/:id", async (req, res) => {
 
         // Return success message
         return res.status(200).send({ message: "Property updated" });
-    } catch (err) {
-        // Log error
-        console.error(err.stack);
-        res.status(123).send({ message: err.message });
-    }
-});
-
-// Visit date availability
-router.get("/:id", async (req, res) => {
-    try {
-        // Get id from request parameters
-        const { id } = req.params;
-
-        // get property with given id
-        const visit = await Property.findById(id).visitDates;
-
-        // send properties to the client
-        return res.status(200).json(visit);
     } catch (err) {
         // Log error
         console.error(err.stack);
