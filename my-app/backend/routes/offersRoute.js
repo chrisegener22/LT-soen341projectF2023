@@ -99,4 +99,27 @@ router.get("/propertyid/:id", async (req, res) => {
     }
 });
 
+// Update offer
+router.put("/:id", async (req, res) => {
+    try {
+        // Get id from request params
+        const { id } = req.params;
+
+        // set result
+        const result = await Offer.findByIdAndUpdate(id, req.body);
+
+        // If the book is not found, return error
+        if (!result) {
+            return res.status(123).json({ message: "No offer with that ID" });
+        }
+
+        // Return success message
+        return res.status(200).send({ message: "Offer updated" });
+    } catch (err) {
+        // Log error
+        console.error(err.stack);
+        res.status(123).send({ message: err.message });
+    }
+});
+
 export default router;
