@@ -5,20 +5,16 @@ import { Property } from "../models/propertyModel.js";
 // Making router to handle requests
 const router = express.Router();
 
+// Regex for searching
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
+
 // Post method to save property
 router.post("/", async (req, res) => {
     try {
         // Set newProperty as data from the request
-        const newProperty = {
-            price: req.body.price,
-            houseNumber: req.body.houseNumber,
-            street: req.body.street,
-            city: req.body.city,
-            province: req.body.province,
-            postalCode: req.body.postalCode,
-            desc: req.body.desc,
-            imageURL: req.body.imageURL,
-        };
+        const newProperty = req.body;
 
         // create new property
         const property = await Property.create(newProperty);
@@ -47,10 +43,9 @@ router.get("/", async (req, res) => {
             });
         } else {
             // Get properties that have the query
+            const regex = new RegExp(escapeRegex(req.query.search), "gi");
             const properties = await Property.find({
-                $text: {
-                    $search: req.query.search,
-                },
+                address: regex,
             });
             console.log("found");
             // send properties to the client
@@ -85,7 +80,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Put method to update a property listing by id
-router.put("/:v", async (req, res) => {
+router.put("/:id", async (req, res) => {
     try {
         // Get id from request params
         const { id } = req.params;
@@ -102,24 +97,6 @@ router.put("/:v", async (req, res) => {
 
         // Return success message
         return res.status(200).send({ message: "Property updated" });
-    } catch (err) {
-        // Log error
-        console.error(err.stack);
-        res.status(123).send({ message: err.message });
-    }
-});
-
-// Visit date availability
-router.get("/:id", async (req, res) => {
-    try {
-        // Get id from request parameters
-        const { id } = req.params;
-
-        // get property with given id
-        const visit = await Property.findById(id).visitDates;
-
-        // send properties to the client
-        return res.status(200).json(visit);
     } catch (err) {
         // Log error
         console.error(err.stack);

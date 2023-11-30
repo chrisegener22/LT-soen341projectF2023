@@ -8,27 +8,9 @@ const propertySchema = mongoose.Schema({
         type: Number,
         required: true,
     },
-    houseNumber: {
-        type: Number,
-        required: true,
-    },
-    street: {
+    address: {
         type: String,
         required: true,
-    },
-    city: {
-        type: String,
-        required: true,
-    },
-    province: {
-        type: String,
-        required: true,
-        maxLength: 2, // Only use abbreviations for provinces
-    },
-    postalCode: {
-        type: String,
-        required: true,
-        maxLength: 6, // Canadian postal codes
     },
     desc: {
         type: String,
@@ -39,13 +21,18 @@ const propertySchema = mongoose.Schema({
         type: String,
         required: true,
     },
-});
-
-propertySchema.index({
-    street: "text",
-    city: "text",
-    province: "text",
-    postalCode: "text",
+    lat: {
+        type: Number,
+        required: true,
+    },
+    lng: {
+        type: Number,
+        required: true,
+    },
+    status: {
+        type: String,
+        default: "pending",
+    },
 });
 
 export const Property = mongoose.model("Property", propertySchema);

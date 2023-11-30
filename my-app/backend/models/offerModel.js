@@ -54,6 +54,10 @@ const offerSchema = mongoose.Schema({
         type: Date,
         required: true,
     },
+    status: {
+        type: String,
+        default: "pending",
+    },
 });
 
 export const Offer = mongoose.model("Offer", offerSchema);

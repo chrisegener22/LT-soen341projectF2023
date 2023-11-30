@@ -41,9 +41,7 @@ export const PropertyDetails = () => {
                         ${property.price}
                     </h1>
                     <h1 className="text-xl font-semibold">
-                        Address: {property.houseNumber} {property.street} St,{" "}
-                        {property.city}, {property.province},{" "}
-                        {property.postalCode}
+                        Address: {property.address}
                     </h1>
                     <h1 className="text-xl">Description: {property.desc}</h1>
                     {auth?.isBroker ? (
