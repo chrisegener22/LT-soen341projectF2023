@@ -39,6 +39,14 @@ export const OfferDetails = () => {
             .catch((err) => {
                 console.log(err);
             });
+
+        data = property;
+        data.status = "sold";
+        axios
+            .put(`http://localhost:8080/api/properties/${property._id}`, data)
+            .catch((err) => {
+                console.log(err);
+            });
     };
 
     const handleReject = () => {
