@@ -85,7 +85,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Put method to update a property listing by id
-router.put("/:v", async (req, res) => {
+router.put("/:id", async (req, res) => {
     try {
         // Get id from request params
         const { id } = req.params;
