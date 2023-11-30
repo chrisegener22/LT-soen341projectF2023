@@ -72,7 +72,7 @@ export const MapComponent = () => {
                             <div>
                                 <h2>{selectedPlace.address}</h2>
                                 <h2>${selectedPlace.price}</h2>
-                                <img src={selectedPlace.imageURL} />
+                                <img src={selectedPlace.imageURL} alt="House" />
                             </div>
                         </InfoWindowF>
                     </Link>
