@@ -10,6 +10,8 @@ export const PropertyUpdate = () => {
     const [address, setAddress] = useState("");
     const [desc, setDesc] = useState("");
     const [imageURL, setImageURL] = useState("");
+    const [lat, setLat] = useState("");
+    const [lng, setLng] = useState("");
     const { isLoaded } = useJsApiLoader({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
         libraries: ["places"],
@@ -33,12 +35,25 @@ export const PropertyUpdate = () => {
 
     // Function to handle updating the property
     const handleUpdateProperty = () => {
+        const geocodeURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+            address
+        )}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
+
+        axios.get(geocodeURL).then((res) => {
+            console.log(res);
+            const { lat, lng } = res.data.results[0].geometry.location;
+            setLat(lat);
+            setLng(lng);
+        });
+
         // set data to send
         const data = {
             price,
             address,
             desc,
             imageURL,
+            lat,
+            lng,
         };
 
         // update data using axios

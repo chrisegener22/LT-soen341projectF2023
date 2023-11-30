@@ -1,5 +1,5 @@
 // Imports
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Autocomplete, useJsApiLoader } from "@react-google-maps/api";
 
@@ -9,6 +9,8 @@ export const AddProperty = () => {
     const [desc, setDesc] = useState("");
     const [imageURL, setImageURL] = useState("");
     const [address, setAddress] = useState("");
+    const [lat, setLat] = useState("");
+    const [lng, setLng] = useState("");
     const { isLoaded } = useJsApiLoader({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
         libraries: ["places"],
@@ -16,12 +18,25 @@ export const AddProperty = () => {
 
     // Function to handle saving the property
     const handleSaveProperty = () => {
+        const geocodeURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+            address
+        )}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
+
+        axios.get(geocodeURL).then((res) => {
+            console.log(res);
+            const { lat, lng } = res.data.results[0].geometry.location;
+            setLat(lat);
+            setLng(lng);
+        });
+
         // set data to send
         const data = {
             price,
             address,
             desc,
             imageURL,
+            lat,
+            lng,
         };
 
         // Send data using axios
