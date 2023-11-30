@@ -26,6 +26,9 @@ const Navbar = () => {
                             className="h-full flex items-center p-2"
                         >
                             Mortgate Calculator
+                        </Link>
+                    </li>
+                ) : null}
                 {auth?.isBroker ? (
                     <li className="hover:bg-red-900">
                         <Link
