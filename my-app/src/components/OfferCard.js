@@ -30,12 +30,6 @@ export const OfferCard = ({ offers }) => {
                             Details
                         </button>
                     </Link>
-                    <button className="bg-green-400 rounded-lg p-2 mx-3">
-                        Accept
-                    </button>
-                    <button className="bg-red-400 rounded-lg p-2 mx-3">
-                        Reject
-                    </button>
                 </div>
             ))}
         </div>
