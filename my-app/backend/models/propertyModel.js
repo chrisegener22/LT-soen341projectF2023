@@ -27,8 +27,4 @@ const propertySchema = mongoose.Schema({
     },
 });
 
-propertySchema.index({
-    address: "text",
-});
-
 export const Property = mongoose.model("Property", propertySchema);

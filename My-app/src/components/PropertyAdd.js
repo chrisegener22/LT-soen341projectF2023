@@ -14,10 +14,6 @@ export const AddProperty = () => {
         libraries: ["places"],
     });
 
-    useEffect(() => {
-        console.log(address);
-    }, [address]);
-
     // Function to handle saving the property
     const handleSaveProperty = () => {
         // set data to send

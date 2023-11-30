@@ -41,12 +41,12 @@ const userSchema = mongoose.Schema({
     },
 });
 
-userSchema.index({
-    firstName: "text",
-    lastName: "text",
-    email: "text",
-    agency: "text",
-    phone_number: "text",
-});
+// userSchema.index({
+//     firstName: "text",
+//     lastName: "text",
+//     email: "text",
+//     agency: "text",
+//     phone_number: "text",
+// });
 
 export const User = mongoose.model("User", userSchema);

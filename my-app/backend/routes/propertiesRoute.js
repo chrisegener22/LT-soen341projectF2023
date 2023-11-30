@@ -5,6 +5,11 @@ import { Property } from "../models/propertyModel.js";
 // Making router to handle requests
 const router = express.Router();
 
+// Regex for searching
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
+
 // Post method to save property
 router.post("/", async (req, res) => {
     try {
@@ -38,10 +43,9 @@ router.get("/", async (req, res) => {
             });
         } else {
             // Get properties that have the query
+            const regex = new RegExp(escapeRegex(req.query.search), "gi");
             const properties = await Property.find({
-                $text: {
-                    $search: req.query.search,
-                },
+                address: regex,
             });
             console.log("found");
             // send properties to the client
