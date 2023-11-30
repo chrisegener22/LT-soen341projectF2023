@@ -23,11 +23,7 @@ export const PropertyCard = ({ properties }) => {
                             ${property.price}
                         </h1>
                         <div className="text-lg">
-                            <h1>
-                                Address: {property.houseNumber}{" "}
-                                {property.street} St, {property.city},{" "}
-                                {property.province}, {property.postalCode}
-                            </h1>
+                            <h1>Address: {property.address}</h1>
                         </div>
                         <div className="flex flex-row justify-around">
                             <Link

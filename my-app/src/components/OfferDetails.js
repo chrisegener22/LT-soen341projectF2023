@@ -86,16 +86,7 @@ export const OfferDetails = () => {
                 </h1>
                 <h1 className="text-lg font-bold">Property Information</h1>
                 <h1 className="text-lg">
-                    Address:{" "}
-                    {offer?.propertyID?.houseNumber +
-                        ", " +
-                        offer?.propertyID?.street +
-                        "St, " +
-                        offer?.propertyID?.city +
-                        ", " +
-                        offer?.propertyID?.province +
-                        ", " +
-                        offer?.propertyID?.postalCode}
+                    Address: {offer?.propertyID?.address}
                 </h1>
                 <h1 className="text-lg font-bold">Offer Information</h1>
                 <h1 className="text-lg">

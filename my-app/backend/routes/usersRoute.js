@@ -5,6 +5,11 @@ import { User } from "../models/userModel.js";
 // Making router to handle requests
 const router = express.Router();
 
+// Regex for searching
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
+
 router.post("/register", async (req, res) => {
     try {
         //set new user from the data from the request
@@ -90,13 +95,19 @@ router.get("/brokers", async (req, res) => {
             });
         } else {
             // Use query to find person
-            const users = await User.find({
+            const regex = new RegExp(escapeRegex(req.query.search), "gi");
+            let users = await User.find({
                 isBroker: true,
                 isAdmin: false,
-                $text: {
-                    $search: req.query.search,
-                },
+                firstName: regex,
             });
+            if (users.length === 0) {
+                users = await User.find({
+                    isBroker: true,
+                    isAdmin: false,
+                    lastName: regex,
+                });
+            }
             // send to client
             return res.status(200).json({
                 count: users.length,

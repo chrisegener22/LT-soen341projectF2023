@@ -187,17 +187,7 @@ export const OfferForm = () => {
                         <input
                             id="address"
                             type="text"
-                            value={
-                                property.houseNumber +
-                                ", " +
-                                property.street +
-                                "St, " +
-                                property.city +
-                                ", " +
-                                property.province +
-                                ", " +
-                                property.postalCode
-                            }
+                            value={property.address}
                             disabled
                             className="w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500"
                         />

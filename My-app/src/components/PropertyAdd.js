@@ -1,30 +1,42 @@
 // Imports
 import React, { useState } from "react";
 import axios from "axios";
+import { Autocomplete, useJsApiLoader } from "@react-google-maps/api";
 
 export const AddProperty = () => {
     // Fields that need to be set
     const [price, setPrice] = useState("");
-    const [houseNumber, setHouseNumber] = useState("");
-    const [street, setStreet] = useState("");
-    const [city, setCity] = useState("");
-    const [province, setProvince] = useState("");
-    const [postalCode, setPostalCode] = useState("");
     const [desc, setDesc] = useState("");
     const [imageURL, setImageURL] = useState("");
+    const [address, setAddress] = useState("");
+    const [lat, setLat] = useState("");
+    const [lng, setLng] = useState("");
+    const { isLoaded } = useJsApiLoader({
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+        libraries: ["places"],
+    });
 
     // Function to handle saving the property
     const handleSaveProperty = () => {
+        const geocodeURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+            address
+        )}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
+
+        axios.get(geocodeURL).then((res) => {
+            console.log(res);
+            const { lat, lng } = res.data.results[0].geometry.location;
+            setLat(lat);
+            setLng(lng);
+        });
+
         // set data to send
         const data = {
             price,
-            houseNumber,
-            street,
-            city,
-            province,
-            postalCode,
+            address,
             desc,
             imageURL,
+            lat,
+            lng,
         };
 
         // Send data using axios
@@ -38,7 +50,13 @@ export const AddProperty = () => {
                 console.log(err);
             });
     };
-
+    if (!isLoaded) {
+        return (
+            <div>
+                <h1 className="text-3xl font-bold">Loading...</h1>
+            </div>
+        );
+    }
     return (
         <div>
             <h1 className="text-3xl font-bold flex justify-center mt-4">
@@ -56,44 +74,15 @@ export const AddProperty = () => {
                     />
                 </div>
                 <div className="my-4">
-                    <label className="text-xl mr-4">House Number</label>
-                    <input
-                        type="text"
-                        className="w-full border-2 px-1"
-                        onChange={(e) => setHouseNumber(e.target.value)}
-                    />
-                </div>
-                <div className="my-4">
-                    <label className="text-xl mr-4">Street</label>
-                    <input
-                        type="text"
-                        className="w-full border-2 px-1"
-                        onChange={(e) => setStreet(e.target.value)}
-                    />
-                </div>
-                <div className="my-4">
-                    <label className="text-xl mr-4">City</label>
-                    <input
-                        type="text"
-                        className="w-full border-2 px-1"
-                        onChange={(e) => setCity(e.target.value)}
-                    />
-                </div>
-                <div className="my-4">
-                    <label className="text-xl mr-4">Province</label>
-                    <input
-                        type="text"
-                        className="w-full border-2 px-1"
-                        onChange={(e) => setProvince(e.target.value)}
-                    />
-                </div>
-                <div className="my-4">
-                    <label className="text-xl mr-4">Postal Code</label>
-                    <input
-                        type="text"
-                        className="w-full border-2 px-1"
-                        onChange={(e) => setPostalCode(e.target.value)}
-                    />
+                    <label className="text-xl mr-4">Address</label>
+                    <Autocomplete>
+                        <input
+                            type="text"
+                            className="w-full border-2 px-1"
+                            onInput={(e) => setAddress(e.target.value)}
+                            onBlur={(e) => setAddress(e.target.value)}
+                        />
+                    </Autocomplete>
                 </div>
                 <div className="my-4">
                     <label className="text-xl mr-4">Description</label>
